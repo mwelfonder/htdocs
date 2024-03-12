@@ -31,23 +31,15 @@ $data = array();
 
 $hbgusernames = array();
 
-
 $conn = dbconnect();
-$query = "SELECT hausbegeher FROM scan4_hbg
-              WHERE status = 'PLANNED';";
+$query = "SELECT DISTINCT hausbegeher FROM scan4_hbg WHERE status = 'PLANNED' ORDER BY hausbegeher ASC;";
 if ($result = $conn->query($query)) {
     while ($row = $result->fetch_assoc()) {
-        if (!in_array($row['hausbegeher'], $hbgusernames)) {
-            $hbgusernames[] = $row['hausbegeher'];
-        }
+        $hbgusernames[] = $row['hausbegeher'];
     }
     $result->free_result();
 }
 $conn->close();
-
-asort($hbgusernames);
-
-
 
 
 $start_date = new DateTime('2023-01-01');
