@@ -103,6 +103,8 @@ foreach ($totals['months'] as $month => $data) {
 }
 */
 
+// get_offdays($hbgusernames);
+// function get_offdays(array $hbgusernames)
 get_offdays();
 function get_offdays()
 {
@@ -128,6 +130,7 @@ function get_offdays()
 
     // iterate over each record in the array
     foreach ($data as $record) {
+    // foreach ($hbgusernames as $username) {
         // extract the username from the record
         $username = $record['username'];
 
@@ -422,30 +425,30 @@ $tooltip_month = 'This is the average per month. First month till the current mo
 
 
 
+if (isset($counts)) {
+    
+    $sort = array_column($counts, 'total');
+    // Sort the $counts array in descending order by 'done' value
+    array_multisort($sort, SORT_DESC, $counts);
+    $rank = 0;
 
+    $hbgusernames = array();
 
-$sort = array_column($counts, 'total');
-// Sort the $counts array in descending order by 'done' value
-array_multisort($sort, SORT_DESC, $counts);
-$rank = 0;
+    foreach ($counts as $name => $values) {
+        $rank++;
+        $Ttotal = $values['total'];
+        $Tdone = $values['done'];
+        $Tabbruch = $values['abbruch'];
+        $Topen = $values['open'];
+        $data_all_total[] = $values['total'];
+        $data_all_done[] = $values['done'];
+        $data_all_abbruch[] = $values['abbruch'];
+        $data_all_open[] = $values['open'];
 
-$hbgusernames = array();
-
-foreach ($counts as $name => $values) {
-    $rank++;
-    $Ttotal = $values['total'];
-    $Tdone = $values['done'];
-    $Tabbruch = $values['abbruch'];
-    $Topen = $values['open'];
-    $data_all_total[] = $values['total'];
-    $data_all_done[] = $values['done'];
-    $data_all_abbruch[] = $values['abbruch'];
-    $data_all_open[] = $values['open'];
-
-    if (!in_array($name, $hbgusernames)) {
-        $hbgusernames[] = $name;
+        if (!in_array($name, $hbgusernames)) {
+            $hbgusernames[] = $name;
+        }
     }
-}
 /*
 echo $data_all_total;
 echo '<br>';
@@ -461,8 +464,7 @@ echo '<pre>';
 echo print_r($total_data);
 echo '</pre>';
 */
-
-
+}
 
 ?>
 
