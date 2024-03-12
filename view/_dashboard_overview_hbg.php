@@ -118,38 +118,6 @@ function get_offdays()
     $current_week = date("W");
     $data = array();
 
-    $conn = dbconnect();
-    for ($week = 1; $week <= $current_week; $week++) {
-        $week_formatted = str_pad($week, 2, "0", STR_PAD_LEFT);
-        $week_string = $current_year . "-W" . $week_formatted;
-
-
-
-        $query = "SELECT *
-              FROM wochenplan
-              WHERE week = '$week_string' AND id IN (
-                  SELECT MAX(id)
-                  FROM wochenplan
-                  WHERE week = '$week_string'
-                  GROUP BY username
-              )";
-
-
-        if ($result = $conn->query($query)) {
-            while ($row = $result->fetch_assoc()) {
-                $data[] = $row;
-            }
-            $result->free_result();
-        }
-
-        echo "<div class='hidden'>$query <br>$week_string<br></div> ";
-    }
-    $conn->close();
-    echo '<div class="hidden">';
-    echo '<pre>';
-    echo print_r($data);
-    echo '</pre>';
-
     $count_by_username = array();
 
     $absence_types = array(
