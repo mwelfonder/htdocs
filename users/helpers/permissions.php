@@ -63,10 +63,10 @@ if (!function_exists('fetchPermissionUsers')) {
         $results = $query->results();
 
         return $results;
-        $row[$user] = ['id' => $id, 'user_id' => $user];
-        if (isset($row)) {
-            return $row;
-        }
+        // $row[$user] = ['id' => $id, 'user_id' => $user];
+        // if (isset($row)) {
+        //     return $row;
+        // }
     }
 }
 
