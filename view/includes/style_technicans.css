@@ -1,0 +1,842 @@
+body {
+    overflow: hidden;
+    /* Verhindert das Scrollen des gesamten Body */
+}
+
+
+.user-list {
+    width: 250px;
+    border-right: 1px solid #ddd;
+    float: left;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    margin-right: 0;
+}
+
+
+
+.user-list-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.user-list-item:hover {
+    background-color: #e9ecef;
+}
+
+.user-list-item.active {
+    background-color: #dee2e6;
+    font-weight: bold;
+}
+
+
+
+
+
+.user-details {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+    margin-left: 264px;
+    margin-top: 10px;
+}
+
+.user-details .user-data div {
+    margin-bottom: 10px;
+}
+
+.user-details .user-data i {
+    color: #007bff;
+    margin-right: 10px;
+}
+
+.user-details .button-bar {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.btn-tab {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #007bff;
+    padding: 8px 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+    text-transform: uppercase;
+    outline: none;
+    /* Optional für einen moderneren Look */
+}
+
+.btn-tab i {
+    margin-right: 5px;
+}
+
+.btn-tab:hover,
+.btn-tab.active {
+    background-color: #e1e3e5;
+    border-color: #007bff;
+    color: #0056b3;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.button-bar {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+}
+
+.user-details-card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.detail-item i {
+    color: #007bff;
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    /* Zentriert die Inhalte horizontal */
+    align-items: flex-start;
+    /* Verhindert das Strecken der Inhalte */
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .btn-tab {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+}
+
+.btn-tab:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+
+/* Stil der Kacheln */
+.appointment-card {
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.appointment-date {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.appointment-data {
+    max-height: calc(100vh - 250px);
+    /* Höhe an die Bildschirmhöhe anpassen */
+    overflow-y: auto;
+    flex-grow: 1;
+    /* Nimmt den verfügbaren Platz ein, bis appointmentDetails erscheint */
+    transition: flex-grow 0.3s ease;
+    /* Weicher Übergang für die Größenänderung */
+}
+
+/* Stil für die Scrollbar */
+.appointment-data::-webkit-scrollbar {
+    width: 8px;
+}
+
+.appointment-data::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.appointment-data::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.appointment-data::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.appointment-data {
+    float: left;
+    width: 100%;
+    padding: 10px;
+}
+
+.appointment-data.active {
+    width: 30%;
+}
+
+.appointment-details {
+    flex-grow: 0.7;
+    overflow-y: auto;
+    /* Ermöglicht das Scrollen innerhalb des Containers */
+    max-height: calc(100vh - 100px);
+    /* Maximale Höhe festlegen, 100px für Header und andere Elemente abziehen */
+}
+
+.appointment-card {
+    cursor: pointer;
+    /* Zeigt an, dass die Kacheln klickbar sind */
+    /* Weitere Stile für die Kacheln */
+}
+
+.appointment-details-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+
+.appointment-detail-card {
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 10px;
+    width: calc(50% - 10px);
+    /* Anpassen für Responsivität */
+}
+
+.appointment-detail-card h5 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.error-card {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.error-card img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.appointment-data.active {
+    flex-grow: 0.3;
+    /* Passt die Größe an, wenn appointmentDetails aktiv sind */
+}
+
+.appointment-details.active {
+    flex-grow: 0.7;
+}
+
+.appointment-details::-webkit-scrollbar {
+    width: 10px;
+}
+
+.appointment-details::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.appointment-details::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.appointment-details::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    /* Hoher z-index */
+    display: flex;
+    align-items: center;
+    /* Vertikale Zentrierung */
+    justify-content: center;
+    /* Horizontale Zentrierung */
+}
+
+
+.lightbox-content {
+    min-width: 40%;
+    /* Maximalbreite relativ zum Viewport */
+    min-height: 40vh;
+    /* Maximalhöhe relativ zur Viewport-Höhe */
+    object-fit: contain;
+    margin-top: 3vh;
+}
+
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+.select-user-message {
+    display: none;
+    text-align: center;
+    font-size: 20px;
+    color: #555;
+    flex-direction: column;
+    /* Elemente vertikal anordnen */
+    gap: 10px;
+    /* Abstand zwischen Icon und Text */
+    margin-top: 17vh;
+}
+
+.select-user-message i {
+    font-size: 40px;
+    /* Größe des Icons */
+    color: #007bff;
+    /* Farbe des Icons */
+}
+
+.select-user-message span {
+    display: block;
+}
+
+#appointmentData {
+    flex-grow: 1;
+    /* Nimmt anfangs den gesamten Platz ein */
+    transition: flex-grow 0.3s ease;
+    /* Weicher Übergang für Größenänderung */
+}
+
+#appointmentDetails {
+    flex-grow: 0;
+    /* Wird erst sichtbar, wenn aktiv */
+    overflow-y: auto;
+    /* Ermöglicht Scrollen bei Bedarf */
+    transition: flex-grow 0.3s ease;
+}
+
+/* Wenn Details aktiv sind */
+#appointmentData.active {
+    flex-grow: 0.3;
+}
+
+#appointmentDetails.active {
+    flex-grow: 0.7;
+}
+
+.navbar-content {
+    background: #fff;
+    max-width: 90%;
+    border-radius: 0.375rem;
+    margin: 0.75rem auto 0;
+    padding: 0.2rem 1.5rem;
+    width: calc(90% - 3.25rem);
+    box-shadow: 0 0 0.375rem 0.25rem rgb(161 172 184 / 15%);
+    color: #697a8d;
+    position: relative;
+    display: flex;
+    z-index: 100 !important;
+}
+
+#map {
+    width: 100%;
+    /* Breite des übergeordneten Containers */
+    height: 88%;
+    /* Höhe des übergeordneten Containers */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#userInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#selectedUsernameDisplay {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#dateDisplayContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#dateDisplayContainer .bi {
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+#dateDisplay {
+    font-size: 1.2em;
+    color: #333;
+    min-width: 200px;
+    /* Stellen Sie diesen Wert nach Bedarf ein */
+    text-align: center;
+}
+
+#dateButtonsContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#dateButtonsContainer button {
+    padding: 5px 15px;
+    border: 1px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    outline: none;
+    /* Entfernt die Umrandung beim Fokussieren */
+}
+
+#dateButtonsContainer button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+#dateButtonsContainer button:not(:last-child) {
+    border-right: none;
+}
+
+/* Zusätzliche Stile für den aktiven Button */
+#dateButtonsContainer button.activeButton {
+    background-color: #007bff;
+    /* Blauer Hintergrund */
+    color: white;
+    /* Weißer Text */
+    border-color: #007bff;
+    /* Blaue Umrandung */
+}
+
+
+/* Crewmeister like Ansicht hier drüber */
+
+
+/* Tabelle mit daten hier drunter */
+
+/* Tabelle auf 80% Breite setzen und zentrieren */
+#dataContainer table {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    /* Leichter Schatten für Tiefe */
+    border-radius: 10px;
+    /* Abgerundete Ecken */
+    overflow: hidden;
+    /* Versteckt die Inhalte außerhalb des border-radius */
+}
+
+/* Zeilen- und Zellen-Styling */
+#dataContainer th,
+#dataContainer td {
+    text-align: center;
+    padding: 14px;
+    border-bottom: 1px solid #ddd;
+    /* Linie zwischen den Zeilen */
+}
+
+/* Kopfzeile der Tabelle stylen */
+#dataContainer th {
+    background-color: #f4f4f4;
+    /* Hintergrundfarbe der Kopfzeile */
+    color: #333;
+    /* Textfarbe */
+    font-weight: bold;
+}
+
+/* Hover-Effekt für Zeilen */
+#dataContainer tr:hover {
+    background-color: #f1f1f1;
+    /* Farbänderung beim Darüberfahren */
+}
+
+/* Erste Zeile (Kopfzeile) nicht beim Hover stylen */
+#dataContainer tr:first-child:hover {
+    background-color: #f4f4f4;
+}
+
+/* Tooltips anpassen */
+.tooltip-inner {
+    background-color: #333;
+    /* Hintergrundfarbe des Tooltips */
+    color: white;
+    /* Textfarbe */
+    border-radius: 4px;
+    /* Abgerundete Ecken */
+    padding: 5px 10px;
+    /* Innenabstand */
+}
+
+div#dataContainer {
+    max-height: 500px;
+    width: 110%;
+    padding-top: 25;
+    overflow-y: auto;
+}
+
+.disabled-button {
+    color: grey;
+    pointer-events: none;
+    /* Verhindert Klick-Events */
+}
+
+#tilesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    padding-bottom: 618px;
+}
+
+#tilesContainer>div {
+    flex: 1 1 calc(50% - 20px);
+    /* Jede Kachel nimmt 50% der Breite abzüglich des Abstands ein */
+    background-color: #f5f5f5;
+    /* Hintergrundfarbe der Kacheln */
+    border: 1px solid #ddd;
+    /* Rand der Kacheln */
+    border-radius: 10px;
+    /* Abgerundete Ecken */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Schatten-Effekt */
+    height: 400px;
+    min-height: 404px;
+    width: 400px;
+    min-width: 404px;
+    /* Mindesthöhe der Kacheln */
+}
+
+@media (max-width: 768px) {
+    #tilesContainer>div {
+        flex-basis: calc(100% - 20px);
+        /* Jede Kachel nimmt die volle Breite abzüglich des Abstands ein */
+    }
+}
+
+/* Stil für die Scrollbar */
+#dataContainer::-webkit-scrollbar {
+    width: 10px;
+    /* Breite der Scrollbar */
+}
+
+#dataContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Hintergrundfarbe des Scrollbar-Tracks */
+    border-radius: 10px;
+    /* Abgerundete Ecken */
+}
+
+#dataContainer::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Farbe des Scrollbar-Griffs */
+    border-radius: 10px;
+    /* Abgerundete Ecken */
+}
+
+#dataContainer::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Farbe des Scrollbar-Griffs beim Hover */
+}
+
+/* Scrollbar-Stile für andere Browser, die nicht WebKit-basiert sind */
+#dataContainer {
+    scrollbar-width: thin;
+    /* 'thin' für eine schmale Scrollbar oder 'auto' für Standard */
+    scrollbar-color: #888 #f1f1f1;
+    /* Scrollbar-Griff und -Track Farben */
+}
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.kachel {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 150px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.errorDetails {
+    max-height: 400px;
+    /* Höhe anpassen, wie erforderlich */
+    overflow-y: auto;
+    /* Scrollbalken aktivieren, wenn nötig */
+    margin-top: 20px;
+    width: 100%;
+}
+
+.errorDetails div {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.errorDetails span {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+.statistics-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    /* Reduzierte Mindestbreite für kleinere Kacheln */
+    gap: 20px;
+    justify-content: center;
+    /* Stellt sicher, dass die Kacheln zentriert sind */
+    align-items: stretch;
+    padding: 0 40px;
+    /* Fügt horizontalen Abstand hinzu, um die Zentrierung zu verbessern */
+    margin-bottom: 40px;
+}
+
+.tile {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+
+.tile span {
+    display: block;
+    font-size: 28px;
+    color: #007bff;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+
+
+
+#hbgStatsChart,
+#averageRatingChart,
+#totalDistanceChart {
+    margin-bottom: 20px;
+    /* Abstand zwischen den Charts */
+}
+
+.chart-box {
+    background: #ffffff;
+    /* Hintergrundfarbe */
+    border-radius: 8px;
+    /* Abgerundete Ecken */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Schatten für Tiefe */
+    margin-bottom: 20px;
+    /* Abstand zwischen den Kästen */
+    padding: 20px;
+    /* Innenabstand */
+}
+
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Ersetzt den Margin-Bottom für .chart-box */
+    margin: 10px;
+    /* Abstand zum Rest der Seite */
+    max-width: calc(100% - 140px);
+    /* Maximale Breite mit Abzug für die Sidebar */
+    max-height: calc(100vh - 300px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f0f0f0;
+    padding-bottom: 300px;
+    /* Angepasst, um den großen Abstand am Ende zu entfernen */
+}
+
+/* Anpassungen für Webkit-Browser bleiben gleich */
+
+.chart-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chart-container::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+.chart-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+    border: 2px solid #f0f0f0;
+}
+
+h2 {
+    margin-top: 0;
+    color: #333;
+    /* Dunkle Schriftfarbe für bessere Lesbarkeit */
+    font-size: 24px;
+    /* Größere Schrift für die Überschrift */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.info_con .user-data .timeline {
+    position: relative;
+    margin-left: 20px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -10px;
+    /* Zentriert den Punkt auf der Linie */
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+}
+
+.timeline-item {
+    margin-bottom: 20px;
+    padding-left: 30px;
+    /* Platz für den Punkt */
+    position: relative;
+}
+
+.timeline-date {
+    font-size: 0.9em;
+    font-style: italic;
+    margin-bottom: 5px;
+    color: #999;
+}
+
+.timeline-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+}
+
+.timeline-content p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Linie für die Timeline */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #ddd;
+}

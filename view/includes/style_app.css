@@ -1,0 +1,537 @@
+/* Sidebar mit Usern unter mir */
+
+.leftContainer {
+    float: left;
+    width: 270px;
+    margin: 20px 20px 20px 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.calendar-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#selectedDate {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    width: calc(100% - 20px);
+}
+
+#userList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.user-item:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.user-name {
+    flex-grow: 1;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* Rechter Container mit den HBGs angezeigt */
+
+
+/* Stil für die Liste der geladenen Werte */
+.rightContainer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rightContainer li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+}
+
+.pdf-container {
+    display: none;
+    /* standardmäßig versteckt */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+/* Stil für die Scrollbar */
+
+.rightContainer>* {
+    max-width: 100%;
+    /* Verhindert, dass Elemente breiter als der Container sind */
+    overflow-x: hidden;
+    /* Versteckt horizontale Überläufe */
+    box-sizing: border-box;
+    /* Stellt sicher, dass Padding und Border innerhalb der Elementbreite enthalten sind */
+}
+
+/* Stil für die Scrollbar */
+.rightContainer::-webkit-scrollbar {
+    width: 8px;
+    /* Breite der Scrollbar */
+}
+
+/* Stil für das Track der Scrollbar, also den Hintergrund */
+.rightContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Farbe des Tracks */
+}
+
+/* Stil für den Thumb der Scrollbar, also den beweglichen Teil */
+.rightContainer::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    /* Farbe des Thumbs */
+    border-radius: 4px;
+    /* Abgerundete Ecken für den Thumb */
+}
+
+/* Stil für den Thumb der Scrollbar beim Hover */
+.rightContainer::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+    /* Dunklere Farbe beim Hover */
+}
+
+/* Stil für die Status-Informationen */
+.status-info {
+    font-size: 0.9em;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    color: #333;
+    /* Weitere Stile nach Bedarf */
+}
+
+.pdf-nav-button {
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.pdf-navigation-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.pdf-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.pdf-nav-left,
+.pdf-nav-right {
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px;
+}
+
+.screenshot-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: crosshair;
+}
+
+.screenshot-selection {
+    position: absolute;
+    border: 2px dashed rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.confirm-icon,
+.cancel-icon {
+    position: fixed;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10102;
+}
+
+.rightContainer {
+    display: none;
+    margin-left: 290px;
+    width: calc(100% - 341px);
+    margin: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    float: right;
+    max-height: 800px;
+    /* Beispiel für eine feste Höhe */
+    overflow-y: auto;
+    /* Ermöglicht vertikales Scrollen innerhalb des Containers */
+    overflow-x: hidden;
+    /* Versteckt die horizontale Scrollleiste */
+}
+
+/* Stile für die Scrollbar */
+.rightContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.rightContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.rightContainer::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.rightContainer::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.pdf-controls {
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 290px;
+    /* oder die Breite Ihrer linken Sidebar */
+    right: 0;
+    background: #fff;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.pdf-controls>* {
+    margin: 0 10px;
+}
+
+.screenshot-btn {
+    padding: 5px 20px;
+}
+
+.completed-entry {
+    background-color: #bcf5cc !important;
+}
+
+
+.pdf-controls>div,
+.pdf-controls>span,
+.pdf-controls>button {
+    margin-right: 10px;
+}
+
+.pdf-nav-left i,
+.pdf-nav-right i {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.page-indicator {
+    font-weight: bold;
+}
+
+.screenshot-btn,
+.report-error-btn,
+.all-errors-found-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    /* Primäre Blaufarbe */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.screenshot-btn:hover,
+.report-error-btn:hover,
+.all-errors-found-btn:hover {
+    background-color: #0056b3;
+    /* Dunklere Blaufarbe beim Hover */
+}
+
+.screenshot-btn i,
+.report-error-btn i,
+.all-errors-found-btn i {
+    margin-right: 5px;
+}
+
+
+
+
+.context-menu {
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.context-menu ul {
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
+}
+
+.context-menu ul li {
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.context-menu ul li:hover {
+    background-color: #f0f0f0;
+}
+
+.mfp-bg,
+.mfp-wrap {
+    z-index: 100000000000 !important;
+}
+
+
+
+
+
+
+
+
+.custom-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.custom-slider:hover {
+    opacity: 1;
+}
+
+.custom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.custom-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider-container {
+    margin: 20px 0;
+}
+
+
+
+
+
+.error-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.error-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.error-item button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    /* Positionieren Sie die Knöpfe oben rechts */
+}
+
+.delete-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #000;
+    /* Standardfarbe */
+}
+
+.delete-icon:hover {
+    color: red;
+    /* Farbe beim Hover */
+}
+
+.jconfirm-box {
+    animation: none !important;
+    /* Deaktiviert Animationen */
+    top: 50% !important;
+    /* Startet in der Mitte */
+    transform: translateY(-50%) !important;
+}
+
+.no-errors-message {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.magnify-canvas {
+    cursor: none;
+    /* Blendet den normalen Cursor aus, wenn die Lupe aktiviert ist */
+}
+
+#magnify-glass {
+    border-radius: 50%;
+    /* Weitere Stile nach Bedarf */
+}
+
+
+
+.magnify-toggle-btn {
+    background-color: #4CAF50;
+    /* Grüne Farbe */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.magnify-toggle-btn:hover {
+    background-color: #45a049;
+    /* Dunkleres Grün für Hover-Effekt */
+}
+
+.magnify-size-slider {
+    width: 200px;
+    /* Breite des Schiebereglers */
+    cursor: pointer;
+}
+
+/* Stil für das Icon im Button */
+.magnify-toggle-btn i {
+    margin-right: 5px;
+}
+
+.magnify-size-slider {
+    -webkit-appearance: none;
+    /* Überschreibt den Standard-Look in WebKit-Browsern */
+    width: 10%;
+    /* Vollständige Breite, um den verfügbaren Raum zu nutzen */
+    height: 15px;
+    /* Höhe des Schiebereglers */
+    border-radius: 5px;
+    /* Abgerundete Ecken */
+    background: #ddd;
+    /* Hintergrundfarbe */
+    outline: none;
+    /* Entfernt den Outline-Fokus-Stil */
+    opacity: 0.7;
+    /* Leicht transparent */
+    -webkit-transition: .2s;
+    /* Glatter Übergang für Hover-Effekte */
+    transition: opacity .2s;
+}
+
+.magnify-size-slider:hover {
+    opacity: 1;
+    /* Volle Deckkraft beim Hovern */
+}
+
+/* Stil für den Griff des Schiebereglers */
+.magnify-size-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Entfernt den Standard-Webkit-Stil */
+    appearance: none;
+    width: 25px;
+    /* Breite des Griffs */
+    height: 25px;
+    /* Höhe des Griffs */
+    border-radius: 50%;
+    /* Kreisförmiger Griff */
+    background: #4CAF50;
+    /* Hintergrundfarbe des Griffs */
+    cursor: pointer;
+    /* Cursor-Stil ändern */
+}
+
+.magnify-size-slider::-moz-range-thumb {
+    width: 25px;
+    /* Breite des Griffs */
+    height: 25px;
+    /* Höhe des Griffs */
+    border-radius: 50%;
+    /* Kreisförmiger Griff */
+    background: #4CAF50;
+    /* Hintergrundfarbe des Griffs */
+    cursor: pointer;
+    /* Cursor-Stil ändern */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    /* Etwas Abstand vom oberen Rand */
+}
+
+.button-container button {
+    background-color: #007bff;
+    /* Ein helles Blau */
+    color: white;
+    /* Weiße Textfarbe */
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    /* Horizontaler Abstand zwischen den Buttons */
+    border: none;
+    /* Entfernt die Standard-Border */
+    border-radius: 5px;
+    /* Abgerundete Ecken */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Fügt einen Übergangseffekt hinzu */
+}
+
+.button-container button i {
+    margin-right: 8px;
+    /* Abstand zwischen Icon und Text */
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+    /* Dunkleres Blau beim Hover */
+}

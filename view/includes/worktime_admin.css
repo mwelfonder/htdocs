@@ -1,0 +1,559 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* Verhindert das Scrollen auf der gesamten Seite */
+    height: 100%;
+    /* Definiert eine volle Höhe für die gesamte Seite */
+}
+
+.rightContainer {
+    float: left;
+    width: calc(100% - 320px);
+    /* Passt die Breite an die Sidebar an */
+    margin-left: 20px;
+    margin-top: 20px;
+    height: 100vh;
+    /* Höhe des rechten Containers auf die Höhe des Viewports setzen */
+    overflow-y: auto;
+    /* Ermöglicht vertikales Scrollen innerhalb des Containers */
+    overflow-x: hidden;
+    /* Versteckt die horizontale Scrollleiste */
+    position: relative;
+    /* Stellt sicher, dass die Positionierung korrekt ist */
+}
+
+
+.rightContainer>* {
+    max-width: 100%;
+    /* Verhindert, dass Elemente breiter als der Container sind */
+    overflow-x: hidden;
+    /* Versteckt horizontale Überläufe */
+    box-sizing: border-box;
+    /* Stellt sicher, dass Padding und Border innerhalb der Elementbreite enthalten sind */
+}
+
+/* Stil für die Scrollbar */
+.rightContainer::-webkit-scrollbar {
+    width: 8px;
+    /* Breite der Scrollbar */
+}
+
+/* Stil für das Track der Scrollbar, also den Hintergrund */
+.rightContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Farbe des Tracks */
+}
+
+/* Stil für den Thumb der Scrollbar, also den beweglichen Teil */
+.rightContainer::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    /* Farbe des Thumbs */
+    border-radius: 4px;
+    /* Abgerundete Ecken für den Thumb */
+}
+
+/* Stil für den Thumb der Scrollbar beim Hover */
+.rightContainer::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+    /* Dunklere Farbe beim Hover */
+}
+
+.user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Restliche Stile für .user-item */
+}
+
+#callTilesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* Erhöhter Abstand zwischen Kacheln */
+    margin: 20px 0;
+}
+
+.call-tile {
+    background-color: #ffffff;
+    /* Heller Hintergrund */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    /* Weicherer Schatten */
+    padding: 15px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Animation für Hover-Effekt */
+}
+
+.call-tile p {
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+}
+
+.call-tile:hover {
+    transform: translateY(-3px);
+    /* Schwebender Effekt beim Darüberfahren */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    /* Hervorgehobener Schatten beim Darüberfahren */
+}
+
+.call-icon {
+    margin-right: 15px;
+    font-size: 1.5em;
+    /* Größere Icons */
+    color: #007bff;
+    /* Icon-Farbe */
+}
+
+.call-info {
+    flex-grow: 1;
+    text-align: left;
+    /* Linksbündiger Text */
+}
+
+.participant-number {
+    margin: 0;
+    font-weight: bold;
+    /* Fettschrift für wichtige Informationen */
+    color: #333;
+    /* Dunklerer Text für bessere Lesbarkeit */
+}
+
+.timer-and-icon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    /* Abstand zwischen Timer und Namen */
+}
+
+.timer-and-icon>i {
+    margin-right: 5px;
+    /* Abstand zwischen Icons und Timer */
+}
+
+.call-end-icon {
+    margin-left: 10px;
+    color: #dc3545;
+    /* Rote Farbe für das Auflegen-Icon */
+    cursor: pointer;
+    /* Zeiger-Cursor für interaktive Icons */
+}
+
+.call-end-icon:hover {
+    color: #bd2130;
+    /* Dunkleres Rot beim Darüberfahren */
+}
+
+
+
+
+
+.statusContainer {
+
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    /* Abstand zum detailsContainer */
+    flex-wrap: wrap;
+    /* Damit die Boxen bei kleineren Bildschirmen umgebrochen werden */
+
+}
+
+.statusBox {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    /* Heller Hintergrund */
+    border-radius: 12px;
+    /* Größere Eckenrundung */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    /* Weicherer Schatten */
+    padding: 15px 25px;
+    /* Mehr Innenabstand */
+    margin: 10px;
+    /* Gleichmäßiger Abstand rundherum */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    /* Animation für Hover-Effekt */
+}
+
+.statusBox:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    /* Hervorgehobener Schatten beim Darüberfahren */
+    transform: translateY(-2px);
+    /* Leichtes Anheben */
+}
+
+.statusBox i {
+    font-size: 2.5em;
+    /* Größere Icons */
+    color: #007bff;
+    /* Leuchtende Primärfarbe */
+    margin-right: 15px;
+    /* Mehr Abstand zum Text */
+}
+
+.statusInfo {
+    text-align: left;
+    /* Linksbündiger Text */
+}
+
+.statusInfo span {
+    display: block;
+    font-size: 1.8em;
+    /* Größere Schrift */
+    font-weight: bold;
+    color: #333;
+    /* Dunklere Schrift für bessere Lesbarkeit */
+}
+
+.statusInfo p {
+    margin: 0;
+    color: #666;
+    /* Sanftere Sekundärfarbe */
+}
+
+
+
+
+
+
+.live-data-btn {
+    background-color: #f8f8f8;
+    /* Hintergrundfarbe, passend zu user-item */
+    border: none;
+    color: #333;
+    /* Dunklere Schriftfarbe für bessere Lesbarkeit */
+    padding: 10px;
+    width: 100%;
+    /* Volle Breite innerhalb des Containers */
+    text-align: left;
+    /* Text linksbündig */
+    display: block;
+    font-size: 16px;
+    margin: 0 0 20px 0;
+    /* Abstand nach unten für Trennung */
+    border-radius: 8px;
+    /* Abgerundete Ecken, passend zu user-item */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    /* Übergangseffekte */
+    box-shadow: none;
+    /* Kein Schatten */
+}
+
+.live-data-btn:hover {
+    background-color: #e0e0e0;
+    /* Farbänderung beim Darüberfahren, wie bei user-item */
+    transform: translateY(-2px);
+    /* Leichtes Anheben beim Hover */
+}
+
+.live-data-btn i {
+    margin-right: 5px;
+    /* Abstand zwischen Icon und Text */
+    font-size: 1.2em;
+    /* Größeres Icon */
+}
+
+.live-data-btn:focus {
+    outline: none;
+    /* Entfernen der Outline */
+}
+
+
+.leftContainer {
+    float: left;
+    width: 270px;
+    /* Reduzieren der Breite, um den zusätzlichen Abstand auszugleichen */
+    margin: 20px 20px 20px 10px;
+    /* 10px linker Außenabstand */
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+
+#userList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.user-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.user-item:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+    /* Leichtes Anheben beim Hover */
+}
+
+.user-name {
+    flex-grow: 1;
+    padding: 10px;
+    font-weight: bold;
+    /* Fettschrift für Benutzernamen */
+}
+
+
+
+#selectedUsername {
+    font-size: 1.8em;
+    /* Größere Schrift für den Titel */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    /* Abstand zum Inhalt unter dem Titel */
+}
+
+
+
+/* Crewmeister like Ansicht hier drunter. Evtl auch für die EInzelansicht der Telefonisten nehmen */
+
+
+#userInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#selectedUsernameDisplay {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#dateDisplayContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#dateDisplayContainer .bi {
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+#dateDisplay {
+    font-size: 1.2em;
+    color: #333;
+    min-width: 200px;
+    /* Stellen Sie diesen Wert nach Bedarf ein */
+    text-align: center;
+}
+
+#dateButtonsContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#dateButtonsContainer button {
+    padding: 5px 15px;
+    border: 1px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    outline: none;
+    /* Entfernt die Umrandung beim Fokussieren */
+}
+
+#dateButtonsContainer button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+#dateButtonsContainer button:not(:last-child) {
+    border-right: none;
+}
+
+/* Zusätzliche Stile für den aktiven Button */
+#dateButtonsContainer button.activeButton {
+    background-color: #007bff;
+    /* Blauer Hintergrund */
+    color: white;
+    /* Weißer Text */
+    border-color: #007bff;
+    /* Blaue Umrandung */
+}
+
+
+/* Crewmeister like Ansicht hier drüber */
+
+
+/* Tabelle mit daten hier drunter */
+
+/* Tabelle auf 80% Breite setzen und zentrieren */
+#dataContainer table {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    /* Leichter Schatten für Tiefe */
+    border-radius: 10px;
+    /* Abgerundete Ecken */
+    overflow: hidden;
+    /* Versteckt die Inhalte außerhalb des border-radius */
+}
+
+/* Zeilen- und Zellen-Styling */
+#dataContainer th,
+#dataContainer td {
+    text-align: center;
+    padding: 14px;
+    border-bottom: 1px solid #ddd;
+    /* Linie zwischen den Zeilen */
+}
+
+/* Kopfzeile der Tabelle stylen */
+#dataContainer th {
+    background-color: #f4f4f4;
+    /* Hintergrundfarbe der Kopfzeile */
+    color: #333;
+    /* Textfarbe */
+    font-weight: bold;
+}
+
+/* Hover-Effekt für Zeilen */
+#dataContainer tr:hover {
+    background-color: #f1f1f1;
+    /* Farbänderung beim Darüberfahren */
+}
+
+/* Erste Zeile (Kopfzeile) nicht beim Hover stylen */
+#dataContainer tr:first-child:hover {
+    background-color: #f4f4f4;
+}
+
+/* Tooltips anpassen */
+.tooltip-inner {
+    background-color: #333;
+    /* Hintergrundfarbe des Tooltips */
+    color: white;
+    /* Textfarbe */
+    border-radius: 4px;
+    /* Abgerundete Ecken */
+    padding: 5px 10px;
+    /* Innenabstand */
+}
+
+div#dataContainer {
+    max-height: 500px;
+    width: 110%;
+    padding-top: 25;
+    overflow-y: auto;
+}
+
+.disabled-button {
+    color: grey;
+    pointer-events: none;
+    /* Verhindert Klick-Events */
+}
+
+#tilesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    padding-bottom: 618px;
+}
+
+#tilesContainer>div {
+    flex: 1 1 calc(50% - 20px);
+    /* Jede Kachel nimmt 50% der Breite abzüglich des Abstands ein */
+    background-color: #f5f5f5;
+    /* Hintergrundfarbe der Kacheln */
+    border: 1px solid #ddd;
+    /* Rand der Kacheln */
+    border-radius: 10px;
+    /* Abgerundete Ecken */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Schatten-Effekt */
+    height: 400px;
+    min-height: 404px;
+    width: 400px;
+    min-width: 404px;
+    /* Mindesthöhe der Kacheln */
+}
+
+@media (max-width: 768px) {
+    #tilesContainer>div {
+        flex-basis: calc(100% - 20px);
+        /* Jede Kachel nimmt die volle Breite abzüglich des Abstands ein */
+    }
+}
+
+.spinner-grow {
+    margin-top: 136px;
+    opacity: 0.5;
+}
+
+div#summaryContainer {
+    margin-bottom: 100px;
+    text-align: left;
+}
+
+
+#summaryContainer {
+
+    padding: 15px;
+    /* Innenabstand */
+    margin: -20px 0;
+    /* Abstand oben und unten */
+    max-width: 500px;
+    /* Maximale Breite des Kastens */
+}
+
+#summaryContent {
+    margin: 0;
+    padding: 0;
+}
+
+#summaryContent p {
+    margin-bottom: 10px;
+    /* Abstand zwischen den Zeilen */
+    font-size: 16px;
+    line-height: 1.5;
+    /* Zeilenhöhe */
+}
+
+#summaryContent span.sub-info {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+#summaryContent i.rotated-icon {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+

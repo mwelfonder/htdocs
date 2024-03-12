@@ -1,0 +1,474 @@
+body {
+  background: #f3f5f9;
+  overscroll-behavior-y: none;
+}
+.hidden {
+  display: none !important;
+}
+.status-indicator {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.outer-circle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: lightgray;
+}
+
+.inner-circle {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: gray;
+}
+
+.photo-container {
+  height: auto;
+  box-sizing: border-box;
+  height: 100%;
+  display: inline-flex;
+  border: 2px dashed #d9d9d9;
+}
+
+.lightbox {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#lightboxCanvas {
+  max-width: 90vw;
+  max-height: 80vh;
+  position: relative;
+}
+
+.lightbox .top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.lightbox .sidebar {
+  position: absolute;
+  top: 25%; /* centers the sidebar vertically */
+  right: 0;
+  width: 50px;
+  height: 50%;
+  background-color: rgb(0 0 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1;
+}
+
+.lightbox .sidebar i {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.preview-image {
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.tooltip-inner {
+  background-color: #333; /* Change background color */
+  color: white; /* Change text color */
+  padding: 10px 20px; /* Increase padding */
+}
+
+.tooltip {
+  z-index: 99999 !important; /* The !important might be necessary if other styles are conflicting */
+}
+
+.nav-tabs .nav-link.active {
+  background: #ffffff;
+  border-radius: 0;
+  color: #000;
+  font-weight: 600;
+  border: none;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #0d6efd;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  border: none !important;
+  color: #878787;
+}
+
+a.active {
+  border-bottom: 2px solid #468ffb !important;
+  border-right: 0px !important;
+}
+
+button.btn.btn-red {
+  background: #e74c3c !important;
+  background-color: #e74c3c !important;
+}
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn[disabled],
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn.disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none; /* Prevent click actions */
+}
+
+/* Custom bottom-up modal animation */
+/* Custom bottom-up modal animation */
+.modal.fade .modal-dialog {
+  transform: translate(0, calc(100% - 100px));
+  transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+  transform: translate(0, 0);
+}
+
+.modal-dialog.modal-fullscreen {
+  max-height: 75vh; /* This means the modal will take up to 75% of the viewport height. */
+  top: 25vh; /* This will leave the top 25% of the viewport uncovered. */
+}
+
+.modal-content {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+#searchInput:focus {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.05
+  ); /* A subtle hint of color when focused */
+}
+
+span.addCanvas {
+  color: #fff;
+}
+
+.signature-pad {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #e0e0e0;
+}
+.appointment {
+  background: #fff;
+  padding: 8px 6px;
+  position: relative;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.appointment.appt_status {
+  border: 1px solid #fff;
+  border-radius: 4px;
+}
+.appointment.appt_status.done {
+  border: 1px solid #0f8f00;
+}
+.appointment.appt_status.canceled {
+  border: 1px solid #b96700;
+}
+.appointment_indicator {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: #ffffff;
+  width: 20px;
+  background: #0f8f00;
+  border-bottom-right-radius: 30px;
+}
+.appointment_indicator > i {
+  left: -10px;
+  position: relative;
+}
+
+.appointment_indicator.appt_status.canceled {
+  background: #b96700;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Prevent scroll on the main body */
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  flex-shrink: 0; /* Ensures the header doesn't shrink beyond its content */
+  width: 100%; /* Ensure the header occupies full width */
+}
+
+.container-fluid {
+  flex-grow: 1; /* Makes sure it occupies the remaining vertical space */
+  width: 100%; /* Ensure the container occupies full width */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.row.flex-grow-1 {
+  flex-grow: 1;
+  display: flex;
+}
+
+#appointmentsContent,
+#leaflet {
+  height: 100%;
+  overflow-y: auto;
+}
+
+#appointmentsContent {
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
+}
+
+#leaflet {
+  overflow: hidden;
+}
+
+/* On medium and large screens, the leaflet is always visible */
+@media screen and (min-width: 768px) {
+  #leaflet {
+    display: block;
+  }
+}
+
+/* On small screens in landscape mode, show the leaflet */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  #leaflet {
+    display: block;
+  }
+}
+
+.appointment-indicator {
+  display: block;
+  background-color: #ff6868; /* or any other color you prefer */
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  font-size: 10px;
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.appointment.selected {
+  background: #6cbcff45;
+}
+.appointment.isPast,
+.appointment.isFuture,
+.appointment.isComplete {
+  opacity: 0.6;
+}
+
+.custom-calendar-container .custom-calendar {
+  border: 1px solid #000;
+  width: 300px;
+  max-width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.custom-calendar-container .custom-calendar.hidden {
+  display: none;
+}
+
+.custom-calendar-container .custom-calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.custom-calendar-container .custom-calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-calendar-container .custom-calendar-table th,
+.custom-calendar-container .custom-calendar-table td {
+  width: calc(100% / 7);
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #001f4f0d;
+}
+.custom-calendar-container .custom-calendar-table td {
+  position: relative;
+}
+
+.custom-calendar-container .custom-calendar-table td:hover {
+  background-color: transparent; /* To avoid coloring the entire cell */
+}
+
+.custom-calendar-container .custom-calendar-table td:hover:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  width: 80%;
+  background-color: #77aeff;
+  margin: 0 auto;
+}
+.custom-calendar-container .current-day {
+  position: relative;
+  font-weight: bold;
+}
+
+.custom-calendar-container .current-day:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-bottom: 15px solid #77aeff;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#customCalendar {
+  position: fixed;
+  z-index: 99999;
+  background: #fff;
+}
+
+.cal-indicator {
+  position: absolute;
+  right: 2px;
+  top: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  opacity: 0;
+}
+
+.cal-indicator > span {
+  font-size: 8px;
+  line-height: 1;
+}
+
+.cal-total {
+  color: blue;
+}
+
+.cal-done {
+  color: green;
+}
+
+.cal-canceled {
+  color: red;
+}
+
+#customCalendarBody td {
+  position: relative;
+  user-select: none;
+}
+.noappointment {
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.btn-danger2 {
+  color: #fff;
+  background-color: #b96700;
+  border-color: #b96700;
+}
+.btn-danger2:hover {
+  color: #fff;
+  background-color: #b96700;
+  border-color: #b96700;
+}
+.btn-outline-danger2 {
+  color: #b96700;
+  border-color: #b96700;
+}
+.btn-outline-danger:hover {
+  color: #fff;
+  background-color: #b96700;
+  border-color: #b96700;
+}
+.close-tab-item {
+  margin-left: auto;
+}
+#infomodaltabs {
+  display: flex;
+}
+.progress-bar {
+  transition: width 0.5s ease;
+  font-size: 10px;
+}
+
+.progress {
+  padding: 0 !important;
+}
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa; /* A light grey background */
+}
+.login-form {
+  width: 300px; /* Adjust the width as needed */
+}
+
+.signPreview {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.signature-modal .modal-content {
+  max-width: 100%; /* Ensure the modal content does not exceed the viewport width */
+  max-height: 100%; /* Ensure the modal content does not exceed the viewport height */
+  overflow: hidden; /* Hide any overflow */
+}
+
+.time-gap {
+  border: 1px dashed #656565;
+  padding: 12px;
+  border-radius: 4px;
+  color: #656565;
+}

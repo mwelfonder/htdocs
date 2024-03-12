@@ -1,0 +1,185 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+#freischalter {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    max-width: 600px;
+}
+
+.modal-content div {
+    margin-bottom: 10px;
+}
+
+strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.no-data {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+}
+
+.ri-ghost-fill {
+    font-size: 50px;
+    color: #bbb;
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    /* Platziert die Elemente an den Enden des Containers */
+}
+
+#activateBtn {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+
+#errorBtn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#customDate {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    display: block;
+}
+
+#dataDisplay {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.success-notification {
+    position: fixed;
+    top: 90px;
+    /* Erhöhen Sie den Abstand von der oberen Kante */
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    /* Optional: Transparenz für bessere Sichtbarkeit */
+    transition: all 0.3s ease-in-out;
+    /* Glattes Ein- und Ausblenden */
+}
+
+.modal-content .header {
+    text-align: center;
+    font-weight: bold;
+}
+
+.modal-content .address {
+    text-align: right;
+    margin-top: 10px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
+    min-height: 100vh;
+}
+
+#freischalter, #activationTrackerContainer {
+    margin: 10px;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#freischalter {
+    max-width: 600px;
+}
+
+#activationTrackerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    max-width: 250px;
+}
+
+#activationTracker {
+    font-size: 20px;
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

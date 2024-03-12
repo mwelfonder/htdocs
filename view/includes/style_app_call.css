@@ -1,0 +1,130 @@
+/* style.css */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f4f4;
+    /* Hintergrundfarbe für die gesamte Seite */
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    /* Ordnet Kinder-Elemente vertikal an */
+    align-items: center;
+    /* Zentriert Kinder-Elemente horizontal */
+    /* Vollständige Bildschirmhöhe */
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.date-selector-container {
+    flex-basis: 20%;
+}
+
+#dateSelector {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    /* Fügt etwas Platz unter dem Datumswähler hinzu */
+}
+
+.carousel-container {
+    flex-grow: 1;
+    /* Nimmt den verbleibenden Raum ein */
+    display: flex;
+    justify-content: center;
+    /* Zentriert das Karussell vertikal */
+    width: calc(100% - 240px);
+    /* Subtrahiert die Breite des Kalenders und des Abstands */
+}
+
+
+.tiles-container {
+    display: flex;
+    gap: 20px;
+    /* Abstand zwischen den Kacheln */
+    padding: 20px;
+    overflow-x: auto;
+    /* Ermöglicht das horizontale Scrollen */
+    scroll-behavior: smooth;
+    width: 70%;
+    /* Setzt die Breite des Containers */
+    justify-content: flex-start;
+    /* Startet die Anzeige der Kacheln am Anfang */
+}
+
+.tile {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    min-width: 250px;
+    /* Mindestbreite der Kacheln */
+    height: 150px;
+    /* Höhe der Kacheln */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.main-tile {
+    transform: scale(1.05);
+    font-weight: bold;
+    border: 2px solid #007bff;
+    /* Farbe für Hervorhebung */
+}
+
+.previous-tile,
+.next-tile {
+    opacity: 0.7;
+}
+
+.previous-tile:hover,
+.next-tile:hover {
+    opacity: 1;
+}
+
+.tile h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.tile p {
+    font-size: 1em;
+    color: #666;
+}
+
+
+
+
+
+
+
+
+#customerDetailsModal .modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+#customerInfo,
+#appointmentInfo {
+    margin-bottom: 15px;
+}
+
+#commentField {
+    margin-bottom: 15px;
+}
+
+#ratingSelect {
+    margin-bottom: 15px;
+}

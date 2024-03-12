@@ -1,0 +1,130 @@
+#gps_map_20240128 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.navbar-content {
+    display: none !important;
+}
+
+.sipGateWrapper {
+    display: none !important;
+}
+
+.countdown-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+}
+
+.countdown-circle {
+    background: #ffffff;
+    /* Hintergrund für die Sichtbarkeit */
+    border-radius: 50%;
+    width: 50px;
+    /* oder die Größe, die Sie wünschen */
+    height: 50px;
+    /* oder die Größe, die Sie wünschen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-timer {
+    font-size: 20px;
+    color: black;
+}
+
+.countdown-wrapper {
+    position: absolute;
+    /* Statt fixed, um es relativ zur Kartenposition zu machen */
+    bottom: 20px;
+    left: 20px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    z-index: 1000;
+    /* Stellen Sie sicher, dass es über der Karte liegt */
+}
+
+.countdown-wrapper:hover {
+    transform: scale(1.1);
+    /* Vergrößern beim Hover */
+}
+
+.countdown-icon {
+    display: none;
+    /* Standardmäßig versteckt */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1em;
+}
+
+.countdown-circle {
+    position: relative;
+    /* ... Ihre anderen Stile ... */
+}
+
+/* Wenn der Countdown pausiert ist, zeigen Sie das Symbol an */
+.countdown-wrapper.paused .countdown-icon {
+    display: block;
+}
+
+
+/* Stil für den Knopf */
+.toggle-users-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    outline: none;
+}
+
+.toggle-users-panel i {
+    font-size: 20px;
+    /* Größe des Icons anpassen */
+    color: #333333;
+    /* Farbe des Icons anpassen */
+}
+
+/* Stil für das Fenster */
+.users-panel {
+    position: fixed;
+    top: 50px;
+    /* Abstand von oben */
+    right: -300px;
+    /* Startposition außerhalb des Bildschirms */
+    width: 250px;
+    height: calc(100% - 100px);
+    /* Abstand von oben und unten */
+    background: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    /* Abgerundete Ecken */
+    padding: 20px;
+    /* Innenabstand */
+    box-sizing: border-box;
+    z-index: 1000;
+    transition: right 0.5s;
+}
+
+/* Klasse, um das Fenster sichtbar zu machen */
+.users-panel.visible {
+    right: 20px;
+    /* Abstand von rechts */
+}

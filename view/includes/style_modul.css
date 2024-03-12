@@ -1,0 +1,412 @@
+.appt-item-wrapper {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	color: #000;
+	font-size: 13px;
+	border-top: 1px solid #bdbdbd;
+	border-bottom: 1px solid #bdbdbd;
+}
+
+.apptitem-body {
+	display: inline-flex;
+	align-items: center;
+	padding-top: 10px;
+	flex-direction: column;
+	min-height: auto;
+	overflow: unset;
+	transition: all 300ms ease-in-out;
+	opacity: 1;
+	background: #fff;
+	border-top: 1px solid #2772d0;
+}
+
+.apptitem-body.colapsed {
+	opacity: 0;
+	padding-top: 0;
+	height: 0;
+	overflow: hidden;
+	padding-top: 0px;
+}
+
+.col-5.modul {
+	flex: 0 0 43.666667%;
+	max-width: 43.666667%;
+	padding-left: 6px;
+	/* display: flex; */
+}
+
+.row.modul {
+	align-items: center;
+}
+
+.flexright {
+	text-align: right;
+	padding-right: 0;
+}
+
+button.btnhbginfo {
+	display: inline-flex;
+	align-items: center;
+}
+
+.appt-distance {
+	text-align: center;
+	padding: 5px;
+	color: #000;
+	background: #fff;
+}
+
+.aligncenter {
+	text-align: center;
+	justify-content: center;
+}
+
+.btnhbginfo.yes {
+	background: #34c759;
+	border: 2px solid #34c759;
+}
+
+.btnhbginfo.no {
+	background: #ff9500;
+	border: 2px solid #ff9500;
+}
+
+.btnhbginfo.itemnavigation {
+	background: #007aff;
+	border: 2px solid #007aff;
+}
+
+.btnhbginfo {
+	color: #fff;
+	background: #34c759;
+	border: 2px solid #34c759;
+	padding: 8px;
+	border-radius: 8px;
+	color: #fff;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.bodycol.hbginfo.buttonwrapper.aligncenter.fullwidth {
+	padding: 10px;
+}
+
+.padding-10 {
+	padding: 10px;
+}
+
+
+.css-207::after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	border-radius: 50%;
+	content: "";
+	box-shadow: rgb(218 59 0) 0rem -1.61875rem 0px -0.25rem, rgb(254 171 67) 1.05547rem -1.00937rem 0px -0.25rem, rgb(2 173 86) 1.05547rem 0.209375rem 0px -0.25rem, rgb(0 120 212) 0rem 0.81875rem 0px -0.25rem, rgb(135 99 184) -1.05547rem 0.209375rem 0px -0.25rem, rgb(227 0 140) -1.05547rem -1.00937rem 0px -0.25rem;
+	margin: 0.16rem -0.2rem -0.2rem;
+	width: 0.4rem;
+	height: 0.4rem;
+}
+
+.hbgwrapbtn>label {
+	margin: 0;
+	padding-left: 4px;
+	color: #000;
+}
+
+.hbgwrapbtn {
+	padding: 5px;
+	align-items: center;
+	display: inline-flex;
+	background: #b5b5b5;
+	border-radius: 20px;
+	margin: 4px 0px;
+}
+
+
+.col-1.modul.icon>i {
+	display: inline-flex;
+}
+
+.col-1.modul.icon.colapsed>i {
+	transform: rotate(450deg);
+	transition: all 400ms;
+}
+
+.col-1.modul.icon>i {
+	transform: rotate(0);
+	transition: all 400ms;
+}
+
+.appt-item-wrapper.opt {
+	opacity: 0.3;
+}
+
+.mod-title {
+	color: #ffffff;
+	font-weight: 600;
+	padding: 14px;
+	background: #6cdb62;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: background 0.3s ease;
+}
+
+a.col-6.itemnavigation {
+	border: 2px solid #fff;
+	padding: 5px;
+	border-radius: 20px;
+	text-align: center;
+}
+
+.row {
+	padding: 4px;
+}
+
+.modul-header {
+	padding: 10px 5px;
+	color: #000;
+}
+
+.loader {
+	width: 48px;
+	height: 48px;
+	border: 3px solid #FFF;
+	border-radius: 50%;
+	display: inline-block;
+	position: relative;
+	box-sizing: border-box;
+	animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+	content: '';
+	box-sizing: border-box;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	border: 3px solid;
+	border-color: #0059ff transparent;
+}
+
+@keyframes rotation {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.fullwidth.aligncenter.mobile.loaderwrapper {
+	width: 100% !important;
+	align-items: center;
+}
+
+.jconfirm .jconfirm-box .jconfirm-buttons button.btn-orange {
+	background-color: #da850e;
+}
+
+.jconfirm .jconfirm-box.jconfirm-type-orange {
+	border-top: solid 7px #da850e !important;
+}
+
+.apptcomment {
+	width: 100%;
+}
+
+
+
+
+/* Beispiel-CSS für einen Kasten um jeden Timeline-Eintrag */
+.timeline-box {
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+}
+
+.timeline-footer {
+	display: flex;
+	justify-content: space-between;
+	/* Sorgt dafür, dass die Elemente in der Fußzeile auseinandergezogen werden */
+	margin-top: 10px;
+	/* Einen kleinen Abstand nach oben geben */
+}
+
+
+.address-text {
+	display: inline-block;
+}
+
+
+.address-text-body {
+	display: none;
+}
+
+
+
+.toggle-address {
+	display: none;
+	/* Verbirgt den Pfeil standardmäßig */
+	cursor: pointer;
+	vertical-align: middle;
+	/* stellt sicher, dass der Pfeil zentriert ist */
+}
+
+@media (max-width: 700px) {
+	.address-text {
+		display: none;
+		/* Verbirgt die Adresse auf kleinen Bildschirmen */
+	}
+
+	.toggle-address {
+		display: inline-block;
+		/* Zeigt den Pfeil auf kleinen Bildschirmen an */
+	}
+
+	.address-text-body {
+		display: inline-block;
+		/* Zeigt den Pfeil auf kleinen Bildschirmen an */
+	}
+
+}
+
+
+
+
+
+
+.settings-container {
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	z-index: 1000;
+}
+
+.settings-button,
+.btnbugreport,
+.btn-calendar,
+.btn-survey {
+	cursor: pointer;
+	background-color: #f3f4f6;
+	border-radius: 50%;
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+	transition: background-color 0.3s ease;
+}
+
+.settings-menu {
+	display: none;
+	flex-direction: column;
+	position: absolute;
+	bottom: -10px;
+	align-items: center;
+	/* Buttons zentrieren */
+	/* Erhöhter Wert, um mit der Ecke abzuschließen */
+	right: -10px;
+	/* Erhöhter Wert, um mit der Ecke abzuschließen */
+	background: #fff;
+	border-radius: 150px 0 0 0;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 300px;
+	height: 300px;
+	justify-content: center;
+	/* Ändert von space-around zu center */
+	align-items: center;
+	padding: 20px 0;
+}
+
+.buttons-container {
+	/* Styles für die neue Wrapper-Div */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+	width: 100%;
+}
+
+.close-menu {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.close-menu i {
+	font-size: 24px;
+	/* Bestimmt die Größe des Icons. Sie können diesen Wert erhöhen oder verringern, um die gewünschte Größe zu erhalten. */
+}
+
+.settings-modal .modal-content {
+	border-top-left-radius: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.btnbugreport,
+.btn-calendar,
+.btn-survey {
+	display: inline-block;
+	margin: 10px 0;
+}
+
+.btnbugreport {
+	border: none;
+	outline: none;
+	box-shadow: none;
+}
+
+
+.btnbugreport i,
+.btn-calendar i,
+.btn-survey i {
+	border-radius: 50%;
+	background-color: #f3f4f6;
+	padding: 5px;
+	box-sizing: content-box;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+}
+
+.btnbugreport:hover i,
+.btn-calendar:hover i,
+.btn-survey:hover i {
+	background-color: #e0e1e3;
+}
+
+.settings-button {
+	cursor: pointer;
+	background-color: #f3f4f6;
+	border-radius: 50%;
+	padding: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+	transition: background-color 0.3s ease;
+	font-size: 24px;
+	width: 50px;
+	height: 50px;
+}
+
+#datePickerContainer {
+	text-align: center;
+}
+
+#datePicker {
+	display: none;
+}

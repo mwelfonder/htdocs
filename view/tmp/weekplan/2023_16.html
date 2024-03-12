@@ -1,0 +1,1051 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Scan4CRM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="view/includes/style.css" media="all">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+
+    <link href="view/assets/fontawesome/css/all.min.css" rel="stylesheet" />
+</head>
+
+<style>
+    #map-close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #fff;
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 11111;
+    }
+
+    #map-close-btn i {
+        font-size: 1.2rem;
+        color: #666;
+    }
+
+    #map-wrapper {
+        position: relative;
+        width: 100%;
+        height: 90vh;
+    }
+
+    #map-search {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 111111111;
+        width: 35%;
+        height: 30px;
+    }
+
+    #map-search i {
+        margin-right: 5px;
+        font-size: 1.2rem;
+        color: #666;
+    }
+
+    #mapsearchinput {
+        border: none;
+        outline: none;
+        font-size: 1.2rem;
+        color: #333;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    #leaflet {
+        height: 100%;
+        width: 100%;
+    }
+
+    .selected-helper {
+        border: 1px solid #0d6efde6;
+    }
+
+    .highlight {
+        background-color: #c8deff;
+    }
+
+    .copycell {
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+        opacity: 0;
+    }
+
+    .deletecell {
+        position: absolute;
+        top: 0;
+        right: 5px;
+        cursor: pointer;
+        opacity: 0;
+    }
+
+    .copycell:hover,
+    .deletecell:hover {
+        opacity: 1;
+    }
+
+    #loadwrapper {
+        width: 100%;
+        padding: 50px;
+        height: 100%;
+        min-height: 500px;
+        display: flex;
+        position: absolute;
+        z-index: 500;
+        background: rgb(255 255 255 / 50%);
+    }
+
+    .btn {
+        cursor: pointer;
+    }
+
+    .disabled {
+        cursor: default;
+    }
+
+    .draggable {
+        cursor: move;
+    }
+
+    .addzone {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        padding: 10px;
+    }
+
+
+    .addzone:not(.dayevent_cell):hover {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z'/%3E%3C/svg%3E");
+        background-size: 0.51vw;
+        cursor: pointer;
+        user-select: none;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .gspace.plain {
+        border-right: 1px solid #cbcbcb;
+        border-bottom: 1px solid #cbcbcb;
+        min-height: 50px;
+        margin: 2px;
+        border-radius: 0px;
+        align-items: center;
+        display: flex;
+    }
+
+    .gspace.dotted {
+        border: 1px dashed;
+    }
+
+    .aligncentered {
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
+    }
+
+    .headtab {
+        padding: 12px;
+        background: #f2f2f2;
+        cursor: pointer;
+        user-select: none;
+        margin-bottom: 6px;
+    }
+
+    .closed {
+        height: 0 !important;
+        overflow: hidden;
+    }
+
+    .plaininfo {
+        margin-left: 6px;
+        font-size: 12px;
+        color: #000;
+        background: #ffd26e;
+        padding: 5px 10px;
+        border-radius: 50px;
+    }
+
+    .dropped {
+        margin: 1px;
+        font-size: 12px;
+        color: #000;
+        padding: 4px 6px;
+        border-radius: 20px;
+    }
+
+    .dropped.Insyte {
+        background: #35abb7;
+    }
+
+    .dropped.Moncobra {
+        background: #e45b27;
+    }
+
+    .cellwrap {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .col-2.gspace.plain.cellwrap {
+        max-width: 14% !important;
+        flex: 0 0 14%;
+    }
+
+    span.weekday-title:after {
+        content: "";
+        width: 100%;
+        height: 2px;
+        background: #626262;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+    span.weekday-title>i {
+        top: 3px;
+        position: relative;
+    }
+
+
+
+    .eventelements {
+        width: 100%;
+        user-select: none;
+    }
+
+    .rowtab {
+        padding: 6px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .eventelements tr.selected {
+        background-color: #c5c5c5;
+        font-weight: 500;
+    }
+
+    span.dayevent {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        padding: 5px;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .dayevent_cell {
+        background: #405189;
+    }
+
+    span.dayevent {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        padding: 5px;
+        font-weight: 600;
+        color: #fff;
+        display: inline-grid;
+        align-items: center;
+    }
+
+    table.eventelements.past {
+        background: #ff221112;
+    }
+
+    .projectlist>div>div:nth-child(1)>div:nth-child(1) {
+        display: none;
+    }
+
+    .hover_tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: black;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .hover_tooltip .row {
+        display: flex;
+        align-items: center;
+    }
+
+    .hover_tooltip .row span {
+        margin-right: 5px;
+    }
+
+    .projectwrapper {
+        position: sticky;
+        top: 0;
+    }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 20px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #d6dee1;
+        border-radius: 20px;
+        border: 6px solid transparent;
+        background-clip: content-box;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #a8bbbf;
+    }
+
+
+    /* print */
+    @media print {
+        #weekplanholder {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: static !important;
+            height: auto !important;
+            width: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: visible !important;
+            z-index: 999999 !important;
+        }
+    }
+</style>
+
+
+
+<div id="weekplanholder" class="col-9">
+    <div class="row" id="columnHeaders">
+        <div class="col">Name</div>
+        <div class="col">Mo 01.05.</div>
+        <div class="col">Di 02.05.</div>
+        <div class="col">Mi 03.05.</div>
+        <div class="col">Do 04.05.</div>
+        <div class="col">Fr 05.05.</div>
+        <div class="col">Sa 06.05.</div>
+    </div>
+    <div class="row">
+        <div style="background-color: #d8e4bc;" class="col-12 rowtab">Hausbegeher</div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_AngeloSchoen">
+        <div style="cursor: pointer;" id="droptable_AngeloSchoen" class="col-2 dropname gspace plain cellwrap"
+            data-count="29">AngeloSchoen <span class="plaininfo">29</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Lautenbach</span><span class="dropped Insyte">Oberkirch</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Lautenbach</span><span class="dropped Insyte">Oberkirch</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_BenGetschmann">
+        <div style="cursor: pointer;" id="droptable_BenGetschmann" class="col-2 dropname gspace plain cellwrap"
+            data-count="0">BenGetschmann <span class="plaininfo">0</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable dayevent_cell">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dayevent dropped">Backoffice</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable dayevent_cell">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dayevent dropped">Backoffice</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable dayevent_cell">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dayevent dropped">Backoffice</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable dayevent_cell">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dayevent dropped">Backoffice</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_CarstenFloeter">
+        <div style="cursor: pointer;" id="droptable_CarstenFloeter" class="col-2 dropname gspace plain cellwrap"
+            data-count="6">CarstenFloeter <span class="plaininfo">6</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_DanielSasse">
+        <div style="cursor: pointer;" id="droptable_DanielSasse" class="col-2 dropname gspace plain cellwrap"
+            data-count="40">DanielSasse <span class="plaininfo">40</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Zweibrücken</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Zweibrücken</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Zweibrücken</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Zweibrücken</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_DanielTschernich">
+        <div style="cursor: pointer;" id="droptable_DanielTschernich" class="col-2 dropname gspace plain cellwrap"
+            data-count="56">DanielTschernich <span class="plaininfo">56</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Breitenheim</span><span class="dropped Moncobra">Callbach</span><span
+                class="dropped Moncobra">Desloch</span><span class="dropped Moncobra">Rehborn</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Breitenheim</span><span class="dropped Moncobra">Callbach</span><span
+                class="dropped Moncobra">Desloch</span><span class="dropped Moncobra">Rehborn</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Breitenheim</span><span class="dropped Moncobra">Callbach</span><span
+                class="dropped Moncobra">Desloch</span><span class="dropped Moncobra">Rehborn</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Breitenheim</span><span class="dropped Moncobra">Callbach</span><span
+                class="dropped Moncobra">Desloch</span><span class="dropped Moncobra">Rehborn</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_DenisAquino">
+        <div style="cursor: pointer;" id="droptable_DenisAquino" class="col-2 dropname gspace plain cellwrap"
+            data-count="33">DenisAquino <span class="plaininfo">33</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Langenorla</span><span class="dropped Moncobra">Oppurg</span><span
+                class="dropped Moncobra">Weira</span><span class="dropped Moncobra">Wernburg</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Langenorla</span><span class="dropped Moncobra">Oppurg</span><span
+                class="dropped Moncobra">Weira</span><span class="dropped Moncobra">Wernburg</span><span
+                class="dropped Moncobra">Saalburg-Ebersdorf</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Langenorla</span><span class="dropped Moncobra">Oppurg</span><span
+                class="dropped Moncobra">Weira</span><span class="dropped Moncobra">Wernburg</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Langenorla</span><span class="dropped Moncobra">Oppurg</span><span
+                class="dropped Moncobra">Weira</span><span class="dropped Moncobra">Wernburg</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_FabianLueg">
+        <div style="cursor: pointer;" id="droptable_FabianLueg" class="col-2 dropname gspace plain cellwrap"
+            data-count="27">FabianLueg <span class="plaininfo">27</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Oberharmersbach</span><span class="dropped Insyte">Zell am Harmersbach</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Oberharmersbach</span><span class="dropped Insyte">Zell am Harmersbach</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Oberharmersbach</span><span class="dropped Insyte">Zell am Harmersbach</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Oberkirch</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_FelixMueller">
+        <div style="cursor: pointer;" id="droptable_FelixMueller" class="col-2 dropname gspace plain cellwrap"
+            data-count="44">FelixMueller <span class="plaininfo">44</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Zweibrücken</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Zweibrücken</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Zweibrücken</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Zweibrücken</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_FrankKoenitz">
+        <div style="cursor: pointer;" id="droptable_FrankKoenitz" class="col-2 dropname gspace plain cellwrap"
+            data-count="59">FrankKoenitz <span class="plaininfo">59</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Adelebsen</span><span class="dropped Insyte">Anröchte</span><span
+                class="dropped Insyte">Bad Driburg</span><span class="dropped Insyte">Bad Grund (Harz)</span><span
+                class="dropped Insyte">Bad Wünnenberg</span><span class="dropped Insyte">Brakel</span><span
+                class="dropped Insyte">Ebergötzen</span><span class="dropped Insyte">Elbingerode</span><span
+                class="dropped Insyte">Hattorf am Harz</span><span class="dropped Insyte">Hörden am Harz</span><span
+                class="dropped Insyte">Höxter</span><span class="dropped Insyte">Katlenburg-Lindau</span><span
+                class="dropped Insyte">Landolfshausen</span><span class="dropped Insyte">Osterode am Harz</span><span
+                class="dropped Insyte">Petersberg</span><span class="dropped Insyte">Petersberg Saalekreis</span><span
+                class="dropped Insyte">Salzatal</span><span class="dropped Insyte">Seulingen</span><span
+                class="dropped Insyte">Waake</span><span class="dropped Insyte">Wulften am Harz</span><span
+                class="dropped Insyte">Elbingerode DGpha</span><span class="dropped Insyte">Hattorf am Harz
+                DGpha</span><span class="dropped Insyte">Hörden am Harz DGpha</span><span class="dropped Insyte">Wulften
+                am Harz DGpha</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Adelebsen</span><span class="dropped Insyte">Anröchte</span><span
+                class="dropped Insyte">Bad Driburg</span><span class="dropped Insyte">Bad Grund (Harz)</span><span
+                class="dropped Insyte">Bad Wünnenberg</span><span class="dropped Insyte">Brakel</span><span
+                class="dropped Insyte">Ebergötzen</span><span class="dropped Insyte">Elbingerode</span><span
+                class="dropped Insyte">Hattorf am Harz</span><span class="dropped Insyte">Hörden am Harz</span><span
+                class="dropped Insyte">Höxter</span><span class="dropped Insyte">Katlenburg-Lindau</span><span
+                class="dropped Insyte">Landolfshausen</span><span class="dropped Insyte">Osterode am Harz</span><span
+                class="dropped Insyte">Petersberg</span><span class="dropped Insyte">Petersberg Saalekreis</span><span
+                class="dropped Insyte">Salzatal</span><span class="dropped Insyte">Seulingen</span><span
+                class="dropped Insyte">Waake</span><span class="dropped Insyte">Wulften am Harz</span><span
+                class="dropped Insyte">Elbingerode DGpha</span><span class="dropped Insyte">Hattorf am Harz
+                DGpha</span><span class="dropped Insyte">Hörden am Harz DGpha</span><span class="dropped Insyte">Wulften
+                am Harz DGpha</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Adelebsen</span><span class="dropped Insyte">Anröchte</span><span
+                class="dropped Insyte">Bad Driburg</span><span class="dropped Insyte">Bad Grund (Harz)</span><span
+                class="dropped Insyte">Bad Wünnenberg</span><span class="dropped Insyte">Brakel</span><span
+                class="dropped Insyte">Ebergötzen</span><span class="dropped Insyte">Elbingerode</span><span
+                class="dropped Insyte">Hattorf am Harz</span><span class="dropped Insyte">Hörden am Harz</span><span
+                class="dropped Insyte">Höxter</span><span class="dropped Insyte">Katlenburg-Lindau</span><span
+                class="dropped Insyte">Landolfshausen</span><span class="dropped Insyte">Osterode am Harz</span><span
+                class="dropped Insyte">Petersberg</span><span class="dropped Insyte">Petersberg Saalekreis</span><span
+                class="dropped Insyte">Salzatal</span><span class="dropped Insyte">Seulingen</span><span
+                class="dropped Insyte">Waake</span><span class="dropped Insyte">Wulften am Harz</span><span
+                class="dropped Insyte">Elbingerode DGpha</span><span class="dropped Insyte">Hattorf am Harz
+                DGpha</span><span class="dropped Insyte">Hörden am Harz DGpha</span><span class="dropped Insyte">Wulften
+                am Harz DGpha</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Adelebsen</span><span class="dropped Insyte">Anröchte</span><span
+                class="dropped Insyte">Bad Driburg</span><span class="dropped Insyte">Bad Grund (Harz)</span><span
+                class="dropped Insyte">Bad Wünnenberg</span><span class="dropped Insyte">Brakel</span><span
+                class="dropped Insyte">Ebergötzen</span><span class="dropped Insyte">Elbingerode</span><span
+                class="dropped Insyte">Hattorf am Harz</span><span class="dropped Insyte">Hörden am Harz</span><span
+                class="dropped Insyte">Höxter</span><span class="dropped Insyte">Katlenburg-Lindau</span><span
+                class="dropped Insyte">Landolfshausen</span><span class="dropped Insyte">Osterode am Harz</span><span
+                class="dropped Insyte">Petersberg</span><span class="dropped Insyte">Petersberg Saalekreis</span><span
+                class="dropped Insyte">Salzatal</span><span class="dropped Insyte">Seulingen</span><span
+                class="dropped Insyte">Waake</span><span class="dropped Insyte">Wulften am Harz</span><span
+                class="dropped Insyte">Elbingerode DGpha</span><span class="dropped Insyte">Hattorf am Harz
+                DGpha</span><span class="dropped Insyte">Hörden am Harz DGpha</span><span class="dropped Insyte">Wulften
+                am Harz DGpha</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_ManfredLindau">
+        <div style="cursor: pointer;" id="droptable_ManfredLindau" class="col-2 dropname gspace plain cellwrap"
+            data-count="25">ManfredLindau <span class="plaininfo">25</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Adelebsen</span><span class="dropped Insyte">Anröchte</span><span
+                class="dropped Insyte">Bad Driburg</span><span class="dropped Insyte">Bad Grund (Harz)</span><span
+                class="dropped Insyte">Bad Wünnenberg</span><span class="dropped Insyte">Brakel</span><span
+                class="dropped Insyte">Ebergötzen</span><span class="dropped Insyte">Elbingerode</span><span
+                class="dropped Insyte">Hattorf am Harz</span><span class="dropped Insyte">Hörden am Harz</span><span
+                class="dropped Insyte">Höxter</span><span class="dropped Insyte">Katlenburg-Lindau</span><span
+                class="dropped Insyte">Landolfshausen</span><span class="dropped Insyte">Osterode am Harz</span><span
+                class="dropped Insyte">Petersberg</span><span class="dropped Insyte">Petersberg Saalekreis</span><span
+                class="dropped Insyte">Salzatal</span><span class="dropped Insyte">Seulingen</span><span
+                class="dropped Insyte">Waake</span><span class="dropped Insyte">Wulften am Harz</span><span
+                class="dropped Insyte">Elbingerode DGpha</span><span class="dropped Insyte">Hattorf am Harz
+                DGpha</span><span class="dropped Insyte">Hörden am Harz DGpha</span><span class="dropped Insyte">Wulften
+                am Harz DGpha</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Adelebsen</span><span class="dropped Insyte">Anröchte</span><span
+                class="dropped Insyte">Bad Driburg</span><span class="dropped Insyte">Bad Grund (Harz)</span><span
+                class="dropped Insyte">Bad Wünnenberg</span><span class="dropped Insyte">Brakel</span><span
+                class="dropped Insyte">Ebergötzen</span><span class="dropped Insyte">Elbingerode</span><span
+                class="dropped Insyte">Hattorf am Harz</span><span class="dropped Insyte">Hörden am Harz</span><span
+                class="dropped Insyte">Höxter</span><span class="dropped Insyte">Katlenburg-Lindau</span><span
+                class="dropped Insyte">Landolfshausen</span><span class="dropped Insyte">Osterode am Harz</span><span
+                class="dropped Insyte">Petersberg</span><span class="dropped Insyte">Petersberg Saalekreis</span><span
+                class="dropped Insyte">Salzatal</span><span class="dropped Insyte">Seulingen</span><span
+                class="dropped Insyte">Waake</span><span class="dropped Insyte">Wulften am Harz</span><span
+                class="dropped Insyte">Elbingerode DGpha</span><span class="dropped Insyte">Hattorf am Harz
+                DGpha</span><span class="dropped Insyte">Hörden am Harz DGpha</span><span class="dropped Insyte">Wulften
+                am Harz DGpha</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Adelebsen</span><span class="dropped Insyte">Anröchte</span><span
+                class="dropped Insyte">Bad Driburg</span><span class="dropped Insyte">Bad Grund (Harz)</span><span
+                class="dropped Insyte">Bad Wünnenberg</span><span class="dropped Insyte">Brakel</span><span
+                class="dropped Insyte">Ebergötzen</span><span class="dropped Insyte">Elbingerode</span><span
+                class="dropped Insyte">Hattorf am Harz</span><span class="dropped Insyte">Hörden am Harz</span><span
+                class="dropped Insyte">Höxter</span><span class="dropped Insyte">Katlenburg-Lindau</span><span
+                class="dropped Insyte">Landolfshausen</span><span class="dropped Insyte">Osterode am Harz</span><span
+                class="dropped Insyte">Petersberg</span><span class="dropped Insyte">Petersberg Saalekreis</span><span
+                class="dropped Insyte">Salzatal</span><span class="dropped Insyte">Seulingen</span><span
+                class="dropped Insyte">Waake</span><span class="dropped Insyte">Wulften am Harz</span><span
+                class="dropped Insyte">Elbingerode DGpha</span><span class="dropped Insyte">Hattorf am Harz
+                DGpha</span><span class="dropped Insyte">Hörden am Harz DGpha</span><span class="dropped Insyte">Wulften
+                am Harz DGpha</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Insyte">Großalmerode</span><span class="dropped Insyte">Gudensberg</span><span
+                class="dropped Insyte">Morschen</span><span class="dropped Insyte">Niedenstein</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_MattiaBonasera">
+        <div style="cursor: pointer;" id="droptable_MattiaBonasera" class="col-2 dropname gspace plain cellwrap"
+            data-count="39">MattiaBonasera <span class="plaininfo">39</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Altenglan</span><span class="dropped Moncobra">Ruthweiler</span><span
+                class="dropped Moncobra">Kusel</span><span class="dropped Moncobra">Pfeffelbach</span><span
+                class="dropped Moncobra">Rammelsbach</span><span class="dropped Moncobra">Reichweiler</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Rehborn</span><span class="dropped Moncobra">Merxheim</span><span
+                class="dropped Moncobra">Meisenheim</span><span class="dropped Moncobra">Monzingen</span><span
+                class="dropped Moncobra">Enkirch</span><span class="dropped Moncobra">Kröv</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Birkenfeld</span><span class="dropped Moncobra">Hoppstädten-Weiersbach</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Gusenburg</span><span class="dropped Moncobra">Grimburg</span><span
+                class="dropped Moncobra">Hermeskeil</span><span class="dropped Moncobra">Kell am See</span><span
+                class="dropped Moncobra">Reinsfeld</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_MaxGuenter">
+        <div style="cursor: pointer;" id="droptable_MaxGuenter" class="col-2 dropname gspace plain cellwrap"
+            data-count="8">MaxGuenter <span class="plaininfo">8</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable dayevent_cell">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span class="dayevent dropped">Survey</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable dayevent_cell">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span class="dayevent dropped">Survey</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable dayevent_cell">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span class="dayevent dropped">Survey</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable dayevent_cell">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span class="dayevent dropped">Survey</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_MichaelWerner">
+        <div style="cursor: pointer;" id="droptable_MichaelWerner" class="col-2 dropname gspace plain cellwrap"
+            data-count="8">MichaelWerner <span class="plaininfo">8</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable dayevent_cell">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span class="dayevent dropped">Survey</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable dayevent_cell">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span class="dayevent dropped">Survey</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable dayevent_cell">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span class="dayevent dropped">Survey</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable dayevent_cell">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span class="dayevent dropped">Survey</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_PascalSchwarzbach">
+        <div style="cursor: pointer;" id="droptable_PascalSchwarzbach" class="col-2 dropname gspace plain cellwrap"
+            data-count="26">PascalSchwarzbach <span class="plaininfo">26</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Zweibrücken</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Zweibrücken</span><span class="dropped Moncobra">Kusel</span><span
+                class="dropped Moncobra">Rammelsbach</span><span class="dropped Moncobra">Reichweiler</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Zweibrücken</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Zweibrücken</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_PauloStascheit">
+        <div style="cursor: pointer;" id="droptable_PauloStascheit" class="col-2 dropname gspace plain cellwrap"
+            data-count="50">PauloStascheit <span class="plaininfo">50</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Langenorla</span><span class="dropped Moncobra">Oppurg</span><span
+                class="dropped Moncobra">Weira</span><span class="dropped Moncobra">Wernburg</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Langenorla</span><span class="dropped Moncobra">Oppurg</span><span
+                class="dropped Moncobra">Weira</span><span class="dropped Moncobra">Wernburg</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Langenorla</span><span class="dropped Moncobra">Oppurg</span><span
+                class="dropped Moncobra">Weira</span><span class="dropped Moncobra">Wernburg</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Langenorla</span><span class="dropped Moncobra">Oppurg</span><span
+                class="dropped Moncobra">Weira</span><span class="dropped Moncobra">Wernburg</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_SamantaThomschke">
+        <div style="cursor: pointer;" id="droptable_SamantaThomschke" class="col-2 dropname gspace plain cellwrap"
+            data-count="36">SamantaThomschke <span class="plaininfo">36</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Langenorla</span><span class="dropped Moncobra">Oppurg</span><span
+                class="dropped Moncobra">Weira</span><span class="dropped Moncobra">Wernburg</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Langenorla</span><span class="dropped Moncobra">Oppurg</span><span
+                class="dropped Moncobra">Weira</span><span class="dropped Moncobra">Wernburg</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Langenorla</span><span class="dropped Moncobra">Oppurg</span><span
+                class="dropped Moncobra">Weira</span><span class="dropped Moncobra">Wernburg</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div><span
+                class="dropped Moncobra">Langenorla</span><span class="dropped Moncobra">Oppurg</span><span
+                class="dropped Moncobra">Weira</span><span class="dropped Moncobra">Wernburg</span>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_TestAlex">
+        <div style="cursor: pointer;" id="droptable_TestAlex" class="col-2 dropname gspace plain cellwrap"
+            data-count="0">TestAlex <span class="plaininfo">0</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: nowrap;" class="row tableday_row" id="droprow_TizianRahner">
+        <div style="cursor: pointer;" id="droptable_TizianRahner" class="col-2 dropname gspace plain cellwrap"
+            data-count="3">TizianRahner <span class="plaininfo">3</span></div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+        <div class="col-2 gspace tableday plain cellwrap droppable ui-droppable addzone">
+            <div class="copycell ui-draggable ui-draggable-handle"><i class="ri-file-copy-line"></i></div>
+            <div class="deletecell"><i class="ri-delete-bin-line"></i></div>
+        </div>
+    </div>
+
+    <div class="row">
+
+    </div>
+</div>

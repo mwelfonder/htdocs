@@ -1,0 +1,170 @@
+:root {
+  --dark-bg: #1e1e1e;
+  --dark-bg-light: #5e5e5e;
+  --dark-bg-lighter: #424242;
+  --dark-body-color: #c7c7c7;
+  --bs-purple: #696cff;
+  --bs-pink: #e83e8c;
+  color-scheme: dark;
+}
+
+body {
+  color: var(--dark-body-color);
+}
+a {
+  color: #000;
+}
+a:hover {
+  color: var(--dark-bg);
+}
+.sidebar-logo-wrapper {
+    background: url(https://crm.scan4-gmbh.de/view/images/logo_scan4scrm_white.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+    margin: 20px;
+}
+.col-2.sidebar,
+div#layout_sidebar {
+  background: var(--dark-bg);
+}
+.row.body_content {
+  background: var(--dark-bg-lighter);
+}
+.row.app-phoner-wrapper,
+.row.app-import-wrapper,
+.row.app-wrapper.hbgcheck {
+  background: var(--dark-bg-light);
+  border-color: #000;
+}
+.progress-item {
+  color: var(--dark-body-color) !important;
+}
+.btn-interact-phonerapp {
+  background: var(--dark-bg);
+}
+.row.phonerapp-visualblock-wrapper {
+  background: var(--dark-bg-lighter);
+  border-color: #000;
+}
+.timeline-head,
+.phoner-customer-heading {
+  color: var(--dark-body-color);
+}
+.timeline-head:hover {
+  color: var(--dark-bg);
+  border-bottom-color: var(--dark-bg);
+}
+.timeline-head.active {
+  border-bottom-color: #000000;
+  color: #000000;
+}
+.navbar-content,input#navbar-search-input {
+  background: var(--dark-bg);
+}
+.navbar-search-result-wrapper {
+    background: var(--dark-bg);
+}
+.btn-interact-phonerapp.hgreen.isset {
+    background: var(--dark-bg-lighter);
+}
+.btn-interact-phonerapp.hgreen.isset {
+    background: var(--dark-bg);
+    color: #076821;
+}
+.btn-interact-phonerapp.hblue.active {
+    background: var(--dark-bg-light);
+    color: #fff;
+}
+.form-control {
+    background-color: var(--dark-bg-light);
+	color:#fff;
+}
+.phoner-card-body {
+    background: var(--dark-bg);
+}
+div#loaderwrapper {
+    background: #2e2e2e00;
+}
+div#app-phoner-sidebar {
+    border-right-color: var(--dark-bg);
+}
+.jconfirm .jconfirm-box {
+    background: #464646;
+}
+.sidebar-menu-itemwrap:hover,li.sidebar-menu-item.aktive>a>div {
+    color: #000;
+    background: var(--dark-bg-lighter);
+}
+ul.sidebar-submenu>li>a,li.sidebar-menu-item>a,li.sidebar-menu-item {
+    color: var(--dark-body-color)
+}
+
+.row.bgwhite {
+    background:var(--dark-bg);
+}
+#toverview>thead {
+    background: var(--dark-bg);
+    box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
+}
+.badges.bgray {
+    background: var(--dark-bg-lighter);
+    color: #000;
+}
+.badges.bblue,span.badges.bred,span.badges.byellow,span.badges.bgreen,.badges.bpurple {
+    color: #000000;
+}
+table.dataTable>tbody>tr.selected>* {
+    box-shadow: inset 0 0 0 9999px rgb(139 139 139 / 20%);
+}
+#loadtable>tbody>tr.odd {
+    background: #181818;
+    box-shadow: 0 0 1px #000000;
+}
+.page-item.disabled .page-link {
+    background:var(--dark-bg-lighter);
+}
+.page-item.active .page-link {
+    background-color:var(--dark-bg);
+}
+.page-link {
+    color: #ffffff;
+    background-color: var(--dark-bg-light);
+}
+.loadtable-wrapper {
+    background: var(--dark-bg-light);
+}
+.phonercards.closed>.phoner-card-body {
+    background: #273e20;
+}
+.row.app-content-wrapper {
+    background: var(--dark-bg-light);
+}
+tr.clientrow>td {
+    box-shadow: 0 0 1px var(--dark-bg-light);
+    background: var(--dark-bg-light);
+}
+table.activation-table>tbody>tr:hover,table.activation-table>tbody>tr.selected {
+    color: var(--dark-bg-light);
+}
+input.inputfaded {
+  color: var(--dark-body-color);
+}
+input.inputfaded:hover,input.inputfaded:active {
+  color: var(--dark-bg-lighter);
+}
+.carrier-gvg {
+  background: url(https://crm.scan4-gmbh.de/view/images/logo_carrier_gvg_smallwide_dark.png);
+}
+
+.carrier-ugg {
+  background: url(https://crm.scan4-gmbh.de/view/images/logo_carrier_ugg_smallwide_dark.png);
+}
+
+.carrier-dgf {
+  background: url(https://crm.scan4-gmbh.de/view/images/logo_carrier_dgf_smallwide_dark.png);
+}
+.hbguserlist-item-wrapper.notapproved.selected, .hbguserlist-item-wrapper.notapproved.selected>div {
+    background: #00327a;
+    color: #fff !important;
+} 

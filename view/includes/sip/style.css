@@ -1,0 +1,640 @@
+@charset"UTF-8";
+
+/* Basis-Styling */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333;
+    background-color: #fafafa;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Wrapper für das Anruffenster */
+.sipGateWrapper {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 19rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+
+/* Kompakte Ansicht */
+.sipGateWrapper.collapsed {
+    width: 6.75rem;
+    /* 60px */
+    height: 4.75rem;
+    /* 60px */
+}
+
+
+.callInfo {
+    width: 190px;
+    height: 70px;
+    float: left;
+}
+
+#connectedCall .callInfo {
+    width: 240px;
+}
+
+#dialPad div {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+
+    /*
+    Introduced in IE 10.
+    See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.callInfo h3 {
+    color: #389400;
+    margin: 13px 2px -2px 10px;
+}
+
+.callInfo p {
+    margin: 0px 25px 0px 13px;
+    float: left;
+}
+
+#answer,
+#hangUp,
+#reject,
+#mute {
+    color: #FFF;
+    background-color: #389400;
+    width: 50px;
+    height: 50px;
+    float: right;
+    text-align: center;
+    font-size: 30px;
+    margin: 10px 0px 10px 0px;
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+#mute:active,
+#reject:active,
+#hangUp:active,
+#answer:active {
+    background-color: #B6B6B6;
+    -webkit-box-shadow: 0px 1px 7px 2px rgba(0, 0, 0, 0.45);
+    -moz-box-shadow: 0px 1px 7px 2px rgba(0, 0, 0, 0.45);
+    box-shadow: 0px 1px 7px 2px rgba(0, 0, 0, 0.45);
+    border: none;
+}
+
+#hangUp,
+#reject {
+    -ms-transform: rotate(135deg);
+    /* IE 9 */
+    -webkit-transform: rotate(135deg);
+    /* Chrome, Safari, Opera */
+    transform: rotate(135deg);
+}
+
+#hangUp {
+    background-color: #A90002;
+    color: white;
+    width: 50px;
+    height: 50px;
+    font-size: 29px;
+    border-radius: 25px;
+    text-align: center;
+    margin-right: 15px;
+}
+
+#reject {
+    background-color: #FFF;
+    color: #A90002;
+    margin-right: 10px;
+}
+
+#mute {
+    color: #FFF;
+    background-color: #389400;
+    width: 260px;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    margin: 20px 20px 0px 20px;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+#mute {
+    color: #545454;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    margin: 15px 125px 10px 20px;
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    background-color: #FFF;
+}
+
+.muteActive {
+    color: #FFF;
+    background-color: #389400;
+}
+
+#to {
+    border-bottom: 0px solid #BBBBBB;
+}
+
+#toField {
+    margin-top: 20px;
+    padding-left: 10px;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    width: 300px;
+    height: 40px;
+    border-radius: 2px 2px 2px 2px;
+    -moz-border-radius: 2px 2px 2px 2px;
+    -webkit-border-radius: 2px 2px 2px 2px;
+    border: 0px solid #B8B8B8;
+}
+
+#dialPad {
+    width: 240px;
+    height: 308px;
+    margin: 0 auto;
+}
+
+#dialPad div {
+    float: left;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 26px;
+    margin: 25px 15px 0px 15px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    border: 1px solid #E8E8E8;
+    padding-top: 5px;
+}
+
+#dialPad div:hover {
+    background-color: #389400;
+    color: #FFF;
+    cursor: pointer;
+    cursor: hand;
+}
+
+#dialPad div:active {
+    background-color: #B2B2B2;
+    -webkit-box-shadow: 0px 1px 7px 2px rgba(0, 0, 0, 0.45);
+    -moz-box-shadow: 0px 1px 7px 2px rgba(0, 0, 0, 0.45);
+    box-shadow: 0px 1px 7px 2px rgba(0, 0, 0, 0.45);
+    border: none;
+}
+
+.fa {
+    margin-top: 11px;
+}
+
+.fa-phone::before {
+    margin-right: 1px;
+}
+
+#answer .fa {
+    -webkit-animation: callp 1s;
+    animation: callp 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-play-state: running;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+@-webkit-keyframes callp {
+    from {
+        color: #FFF;
+    }
+
+    to {
+        color: #389400;
+    }
+}
+
+@keyframes callp {
+    from {
+        color: #FFF;
+    }
+
+    to {
+        color: #389400;
+    }
+}
+
+#answer {
+    -webkit-animation: call 1s;
+    animation: call 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-play-state: running;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+@-webkit-keyframes call {
+    from {
+        background: #389400;
+    }
+
+    to {
+        background: #FFF;
+    }
+}
+
+@keyframes call {
+    from {
+        background: #389400;
+    }
+
+    to {
+        background: #FFF;
+    }
+}
+
+/* Anzeige während des Anrufs: Nummer, Dauer und Auflegen-Knopf */
+#inCallDisplay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+#inCallDisplay .number {
+    font-size: 1em;
+    color: #494949;
+}
+
+#inCallDisplay .duration {
+    font-size: 1em;
+    color: #494949;
+}
+
+/* Anruf-Starten-Knopf und Eingabefeld nebeneinander */
+#toField,
+#connectCall {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#toField {
+    width: calc(100% - 172px);
+    margin-top: 24px;
+    padding-left: 7px;
+    font-size: 1em;
+    height: 41px;
+    margin-left: 47px;
+    border-radius: 22px;
+    border: 0px solid #B8B8B8;
+}
+
+#connectCall {
+    color: #28a745;
+    background-color: transparent;
+    width: 61px;
+    height: 45px;
+    float: right;
+    text-align: center;
+    font-size: 30px;
+    margin: 28px 5px 9px 0px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: font-size 0.3s ease;
+}
+
+#connectCall:hover {
+    font-size: 35px;
+    /* Vergrößern des Icons beim Hover */
+}
+
+#muteRingtone {
+    color: #28a745;
+    /* Dezent grüne Farbe für das Icon */
+    background-color: transparent;
+    /* Kein Hintergrund */
+    width: 48px;
+    height: 45px;
+    float: right;
+    text-align: center;
+    font-size: 45px;
+    /* Ursprüngliche Größe des Icons */
+    margin: 21px 2px 10px 0px;
+    border-radius: 25px;
+    /* Abgerundete Ecken */
+    cursor: pointer;
+    transition: font-size 0.3s ease;
+    /* Übergangseffekt für das Icon */
+}
+
+#muteRingtone:hover {
+    font-size: 50px;
+    /* Vergrößern des Icons beim Hover */
+}
+
+.fa.fa-bell-slash::before {
+    font-size: 24px;
+}
+
+
+
+#incomingCallNumber {
+    color: #333;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#copiedGif {
+    position: fixed;
+    /* Fixierte Position im Viewport */
+    display: none;
+    width: 15px;
+    /* Beispielgröße, anpassen nach Bedarf */
+    height: 15px;
+    /* Stellen Sie sicher, dass die Höhe zum Bildverhältnis passt */
+    /* Optional: Weitere Stil-Anpassungen */
+}
+
+#toggleMenu {
+    cursor: pointer;
+    position: absolute;
+    top: 32px;
+    left: 14px;
+    color: #333;
+    font-size: 20px;
+    background-color: transparent;
+    /* Hintergrundfarbe transparent */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    box-shadow: none;
+    /* Entfernt den Schatten */
+    transition: font-size 0.3s ease;
+    /* Übergangseffekt für das Icon */
+}
+
+#toggleMenu:hover {
+    font-size: 24px;
+    /* Vergrößert das Icon beim Hover */
+}
+
+#toggleMenu i {
+    display: block;
+    /* Stellt sicher, dass das Icon zentriert ist */
+}
+
+
+.menu-button {
+    outline: none; /* Entfernt den Fokus-Rahmen, der bei Klick erscheint */
+    background: none;
+    border: none;
+    color: #000;
+    /* Schwarze Schrift */
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    /* Abstand zwischen den Knöpfen */
+    transition: all 0.3s ease;
+    padding: 0; /* Entfernt den Standard-Abstand */
+    /* Glatter Übergang für Hover-Effekte */
+}
+
+.menu-button:focus {
+    outline: none; /* Entfernt den Fokus-Rahmen, der bei Klick erscheint */
+    border: none; /* Entfernt den Standard-Rahmen */
+    background: none; /* Entfernt den Standard-Hintergrund */
+    padding: 0; /* Entfernt den Standard-Abstand */
+}
+
+
+.menu-button:hover {
+    background-color: #f2f2f2;
+    /* Leichter Hintergrund beim Hover für bessere Erkennbarkeit */
+}
+
+.menu-button.active {
+    border-bottom: 2px solid blue;
+    /* Blauer Strich für den aktiven Button */
+}
+
+/* Stil für die Umrandung des Menüs, um es klarer vom Hintergrund abzuheben */
+#menu {
+    position: fixed;
+    margin: 35px 0px 34px 50px;
+    bottom: 5rem;
+    right: 1rem;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    width: 304px;
+    max-height: 326px;
+    display: none;
+    z-index: 9999;
+}
+
+#menu-text {
+    text-align: center;
+    /* Zentriert den Text horizontal */
+    margin-top: 6px;
+}
+
+#menu-text i {
+    display: block;
+    /* Ändert die Anzeige auf "Block", um das Icon zu zentrieren */
+    font-size: 36px;
+    /* Passen Sie die Schriftgröße des Icons an */
+    margin-bottom: 20px;
+    /* Verschiebt das Icon nach unten */
+}
+
+#menu-text p {
+    margin-top: 10px;
+    /* Verschiebt den Text nach unten */
+    max-height: 300px;
+    /* oder eine andere Höhe, die zu Ihrem Layout passt */
+    overflow-y: auto;
+}
+
+.file-entry .play-sound {
+    margin-right: 10px;
+    /* Abstand zwischen Button und Text */
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.play-sound i {
+    color: #007bff;
+    /* Blaue Farbe für das Icon */
+    font-size: 16px !important;
+    /* Kleinere Größe des Icons */
+}
+
+#file-list {
+    margin-bottom: 20px;
+    /* Abstand zwischen Soundliste und Lautstärkeregler */
+}
+
+/* Optional: Stil für den Lautstärkeregler und Speichern-Button */
+#volume-control,
+#save-sound {
+    width: 90%;
+    /* Vollständige Breite */
+}
+
+/* Hauptcontainer-Stil */
+#menu-text p {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    overflow-y: auto;
+    max-height: 273px;
+    border-radius: 0 0 0px 0px;
+    /* Anpassen nach Bedarf */
+}
+
+/* Anpassungen für die Anruf-Einträge */
+.call-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    border-bottom: 1px solid #ccc;
+    /* Trennlinie zwischen Einträgen */
+    background-color: #202020;
+    /* Dunkler Hintergrund */
+    color: #fff;
+    /* Weiße Schrift */
+}
+
+
+.call-entry i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.phone-number {
+    flex-grow: 1;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.call-time {
+    text-align: right;
+    font-size: 0.9rem;
+    padding-right: 10;
+}
+
+
+
+/* Stil für die Scrollbar */
+#menu-text p::-webkit-scrollbar {
+    width: 5px;
+}
+
+#menu-text p::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#menu-text p::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+#menu-text p::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+#menu-text p {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+#file-entry {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+.bi-telephone-inbound::before {
+    content: "\f5b8";
+    font-size: 17px;
+    margin-top: 16px;
+    padding-left: 10px;
+}
+
+.bi-telephone-outbound::before {
+    content: "\f5bc";
+    font-size: 17px;
+    margin-top: 16px;
+    padding-left: 10px;
+}
+
+.call-entry .phone-number {
+    /* Für die Telefonnummer */
+    flex-grow: 1;
+    font-size: 0.9rem;
+    text-align: left !important;
+    /* Stellt sicher, dass die Nummer linksbündig ist */
+}
+
+.call-entry .call-time {
+    /* Für die Uhrzeit */
+    text-align: right;
+    /* Stellt sicher, dass die Uhrzeit rechtsbündig ist */
+    font-size: 0.7rem !important;
+}
+
+/* Entfernen Sie die Rahmen von Play/Stop-Buttons */
+.play-sound,
+.play-sound:focus {
+    outline: none; /* Entfernt den Fokus-Rahmen, der bei Klick erscheint */
+    border: none; /* Entfernt den Standard-Rahmen */
+    background: none; /* Entfernt den Standard-Hintergrund */
+    padding: 0; /* Entfernt den Standard-Abstand */
+}
+
+/* Stil für Play/Stop-Icons */
+.play-sound i {
+    color: #007bff; /* Farbe für das Play-Symbol */
+    cursor: pointer; /* Cursor wird zum Zeiger, um Klickbarkeit anzuzeigen */
+}
+
+/* Verändere das Symbol zu Pause, wenn der Ton spielt */
+.playing i {
+    color: #ff0000; /* Farbe für das Stop-Symbol */
+}

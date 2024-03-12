@@ -1,0 +1,9 @@
+RewriteEngine on
+RewriteBase /
+
+# Block access to the /.git directory and its files
+RewriteRule ^\.git/ - [F,L]
+
+# Existing conditions and rules for uploads and dummy directories
+RewriteCond %{REQUEST_URI} ^\/(uploads|dummy)\/.*$
+RewriteRule !^((.*.php)|(.*\/))$ authorize.php

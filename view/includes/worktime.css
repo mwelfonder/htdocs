@@ -1,0 +1,445 @@
+
+
+.rightContainer {
+    float: left;
+    /* Positioniert den Container neben dem linken Container */
+    width: calc(100% - 320px);
+    /* Breite, berechnet unter Berücksichtigung des linken Containers und des Gaps */
+    margin-left: 20px;
+    /* Abstand zum linken Container */
+    margin-top: 20px;
+    /* Gleich wie der obere Margin des linken Containers */
+    height: auto;
+    /* Höhe des Containers wird durch den Inhalt bestimmt */
+}
+
+
+
+
+.user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Restliche Stile für .user-item */
+}
+
+.live-indicator {
+    font-size: 12px;
+    /* Kleine Schriftgröße für den Text */
+    color: black;
+    /* Farbe des Textes */
+    display: flex;
+    align-items: center;
+}
+
+.live-dot {
+    width: 6px;
+    /* Größe des roten Punkts */
+    height: 6px;
+    border-radius: 50%;
+    /* Kreisform */
+    background-color: red;
+    /* Rote Farbe */
+    margin-left: 4px;
+    /* Abstand zum Text */
+}
+
+.charts-flex-container {
+    display: flex;
+    justify-content: center;
+    /* Zentriert die Charts */
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.chartWrapper {
+    flex-basis: 30%;
+    /* Passen Sie die Breite nach Bedarf an */
+    margin: 10px;
+    text-align: center;
+    /* Zentriert das Label unter dem Chart */
+    border: 1px solid #ddd;
+    /* Rahmen hinzufügen */
+    background-color: #f9f9f9;
+    /* Hintergrundfarbe */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Einen leichten Schatten hinzufügen */
+    border-radius: 8px;
+    /* Abgerundete Ecken */
+    padding: 15px;
+    /* Innenabstand */
+}
+
+.chartContainer {
+    height: 150px;
+    /* Verkleinern Sie die Höhe der Charts */
+}
+
+.chartLabel {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+#callTilesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* Erhöhter Abstand zwischen Kacheln */
+    margin: 20px 0;
+}
+
+.call-tile {
+    background-color: #ffffff;
+    /* Heller Hintergrund */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    /* Weicherer Schatten */
+    padding: 15px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Animation für Hover-Effekt */
+}
+
+.call-tile p {
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+}
+
+.call-tile:hover {
+    transform: translateY(-3px);
+    /* Schwebender Effekt beim Darüberfahren */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    /* Hervorgehobener Schatten beim Darüberfahren */
+}
+
+.call-icon {
+    margin-right: 15px;
+    font-size: 1.5em;
+    /* Größere Icons */
+    color: #007bff;
+    /* Icon-Farbe */
+}
+
+.call-info {
+    flex-grow: 1;
+    text-align: left;
+    /* Linksbündiger Text */
+}
+
+.participant-number {
+    margin: 0;
+    font-weight: bold;
+    /* Fettschrift für wichtige Informationen */
+    color: #333;
+    /* Dunklerer Text für bessere Lesbarkeit */
+}
+
+.timer-and-icon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    /* Abstand zwischen Timer und Namen */
+}
+
+.timer-and-icon>i {
+    margin-right: 5px;
+    /* Abstand zwischen Icons und Timer */
+}
+
+.call-end-icon {
+    margin-left: 10px;
+    color: #dc3545;
+    /* Rote Farbe für das Auflegen-Icon */
+    cursor: pointer;
+    /* Zeiger-Cursor für interaktive Icons */
+}
+
+.call-end-icon:hover {
+    color: #bd2130;
+    /* Dunkleres Rot beim Darüberfahren */
+}
+
+.statusContainer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px; /* Abstand zum detailsContainer */
+    flex-wrap: wrap; /* Damit die Boxen bei kleineren Bildschirmen umgebrochen werden */
+}
+
+.statusBox {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; /* Heller Hintergrund */
+    border-radius: 12px; /* Größere Eckenrundung */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* Weicherer Schatten */
+    padding: 15px 25px; /* Mehr Innenabstand */
+    margin: 10px; /* Gleichmäßiger Abstand rundherum */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Animation für Hover-Effekt */
+}
+
+.statusBox:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); /* Hervorgehobener Schatten beim Darüberfahren */
+    transform: translateY(-2px); /* Leichtes Anheben */
+}
+
+.statusBox i {
+    font-size: 2.5em; /* Größere Icons */
+    color: #007bff; /* Leuchtende Primärfarbe */
+    margin-right: 15px; /* Mehr Abstand zum Text */
+}
+
+.statusInfo {
+    text-align: left; /* Linksbündiger Text */
+}
+
+.statusInfo span {
+    display: block;
+    font-size: 1.8em; /* Größere Schrift */
+    font-weight: bold;
+    color: #333; /* Dunklere Schrift für bessere Lesbarkeit */
+}
+
+.statusInfo p {
+    margin: 0;
+    color: #666; /* Sanftere Sekundärfarbe */
+}
+
+.leftContainer {
+    float: left;
+    width: 270px; /* Reduzieren der Breite, um den zusätzlichen Abstand auszugleichen */
+    margin: 20px 20px 20px 10px; /* 10px linker Außenabstand */
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+
+.leftContainerSingle {
+    float: left;
+    width: 270px; /* Reduzieren der Breite, um den zusätzlichen Abstand auszugleichen */
+    margin: 20px 20px 20px 10px; /* 10px linker Außenabstand */
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+#userListContainer {
+    overflow-y: auto;
+    padding: 10px;
+}
+
+#userListContainerSingle {
+    overflow-y: auto;
+    padding: 10px;
+}
+
+
+#calendarInput {
+    width: calc(100% - 20px); /* Berücksichtigt das Padding */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f8f8; /* Leicht grauer Hintergrund für den Kalender */
+}
+
+#userList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#userListSingle {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.user-item:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px); /* Leichtes Anheben beim Hover */
+}
+
+.user-name {
+    flex-grow: 1;
+    padding: 10px;
+    font-weight: bold; /* Fettschrift für Benutzernamen */
+}
+
+/* Stil für den "Extended Stats"-Button */
+.elegantButton {
+    display: block;
+    width: 100%;
+    background-color: #007bff; /* Blaue Hintergrundfarbe */
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.elegantButton:hover {
+    background-color: #0056b3; /* Dunklere Farbe beim Hover */
+}
+
+#detailsContainer {
+    position: relative;
+    min-height: 520px; /* Stellt sicher, dass der Container eine Mindesthöhe hat */
+    max-height: 620px;;
+    display: none;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px; /* Fügt um den Container herum etwas Platz hinzu */
+}
+
+#detailsContainer.visible {
+    display: block;
+}
+
+#selectedUsername {
+    font-size: 1.8em; /* Größere Schrift für den Titel */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px; /* Abstand zum Inhalt unter dem Titel */
+}
+
+#noUserSelected, #noDataMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#noUserSelected i, #noDataMessage i {
+    font-size: 4em;
+    color: #4CAF50; /* Farbe des Icons */
+    margin-bottom: 20px;
+}
+
+#noUserSelected p, #noDataMessage p {
+    font-size: 1.5em;
+    color: #666;
+}
+
+#totalWorkTime {
+    font-size: 1.5em;
+    margin-top: 20px; /* Fügt etwas Abstand zum oberen Inhalt hinzu */
+    color: #4CAF50; /* Farbe des Textes */
+}
+
+#loadingSpinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.initial-state i {
+    font-size: 30px;
+    margin: 0 10px; /* Fügt Abstand zwischen den Icons hinzu */
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.initial-state i:hover {
+    color: #007bff;
+}
+
+.initial-state i:active, .icon-active {
+    color: #0056b3;
+}
+
+
+
+#detailsContainerDepth {
+    position: relative;
+    min-height: 520px; /* Stellt sicher, dass der Container eine Mindesthöhe hat */
+    display: none;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px; /* Fügt um den Container herum etwas Platz hinzu */
+}
+
+#detailsContainerDepth.visible {
+    display: block;
+}
+
+#selectedUsername {
+    font-size: 1.8em; /* Größere Schrift für den Titel */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px; /* Abstand zum Inhalt unter dem Titel */
+}
+
+#noDataSelected, #noDataMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#noDataSelected i, #noDataMessage i {
+    font-size: 4em;
+    color: #4CAF50; /* Farbe des Icons */
+    margin-bottom: 20px;
+}
+
+#noDataSelected p, #noDataMessage p {
+    font-size: 1.5em;
+    color: #666;
+}
+
+
+#loadingSpinner2 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#userInfoTitle h2 {
+    font-size: 0.2;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px; /* Abstand zum Inhalt unter dem Titel */
+}
+
+#userInfoTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+
+#calendarIcon {
+    margin-left: 10px; /* Abstand zwischen Titel und Icon */
+    cursor: pointer;
+}

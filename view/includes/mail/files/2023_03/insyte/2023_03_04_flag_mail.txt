@@ -1,0 +1,4 @@
+Hello Team Insyte, <br><br> Please find the attached bug reports for the last 24 hours. <br><br>Kind regards, <br>Scan4 Team<br><br>This is an automatically generated email. Please do not reply to this email.
+1
+Attachments:
+- 2023_03_03_app_errors
